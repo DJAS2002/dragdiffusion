@@ -50,19 +50,20 @@ if __name__ == '__main__':
     loss_fn_alex = lpips.LPIPS(net='alex').to(device)
 
     # load clip model
-    clip_model, clip_preprocess = clip.load("ViT-B/32", device=device, jit=False)
+    clip_model, clip_preprocess = (clip.load("ViT-B/32", device=device, jit=False))
+    # clip_model, clip_preprocess = (clip.lo ("ViT-B/32", device=device, jit=False))
 
     all_category = [
-        'art_work',
-        'land_scape',
-        'building_city_view',
-        'building_countryside_view',
-        'animals',
-        'human_head',
-        'human_upper_body',
-        'human_full_body',
-        'interior_design',
-        'other_objects',
+        #'art_work',
+        # 'land_scape',
+        # 'building_city_view',
+        # 'building_countryside_view',
+         'animals',
+        # 'human_head',
+        # 'human_upper_body',
+        # 'human_full_body',
+        # 'interior_design',
+        # 'other_objects',
     ]
 
     original_img_root = 'drag_bench_data/'
@@ -102,6 +103,8 @@ if __name__ == '__main__':
                     dragged_feature /= dragged_feature.norm(dim=-1, keepdim=True)
                     cur_clip_sim = (source_feature * dragged_feature).sum()
                     all_clip_sim.append(cur_clip_sim.cpu().numpy())
+            # print(f"all lpips: {all_lpips}")
+            # print(f"all clips sim: {all_clip_sim}")
         print(target_root)
-        print('avg lpips: ', np.mean(all_lpips))
+        print('avg lpips: ', 1 - np.mean(all_lpips))
         print('avg clip sim', np.mean(all_clip_sim))

@@ -12,3 +12,5 @@
 
 ## notes
 - De GUI gemaakt met `gradio` werkte niet met de voorgestelde versie. Geupgrade naar versie 3.50.2, waardoor ook `huggingface-hub<0.26.0` moest worden en `jinja2==3.1.2`
+
+

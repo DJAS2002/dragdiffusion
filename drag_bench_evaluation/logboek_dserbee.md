@@ -42,3 +42,17 @@ pip install clip     (version 0.2.0)
 <br>
 toegevoegd aan `requirements.txt`.
 
+# 3 januari 2025
+venv aangemaakt, was niet aanwezig.
+
+clip uninstall
+pip install git+https://github.com/openai/CLIP.git
+
+in dift_sd.py 
+regel 219 veranderd:
+ org: prompt_embeds = self.pipe._encode_prompt(
+ new: prompt_embeds = self.pipe.encode_prompt(
+
+regel 224 veranderd:
+ org: prompt_embeds = prompt_embeds.repeat(ensemble_size, 1, 1)
+ new: prompt_embeds = prompt_embeds[0].repeat(ensemble_size, 1, 1)

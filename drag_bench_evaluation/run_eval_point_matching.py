@@ -46,15 +46,15 @@ if __name__ == '__main__':
 
     all_category = [
         'art_work',
-        'land_scape',
-        'building_city_view',
-        'building_countryside_view',
-        'animals',
-        'human_head',
-        'human_upper_body',
-        'human_full_body',
-        'interior_design',
-        'other_objects',
+        # 'land_scape',
+        # 'building_city_view',
+        # 'building_countryside_view',
+        # 'animals',
+        # 'human_head',
+        # 'human_upper_body',
+        # 'human_full_body',
+        # 'interior_design',
+        # 'other_objects',
     ]
 
     original_img_root = 'drag_bench_data/'
