@@ -26,6 +26,8 @@ def point_tracking(F0,
                    handle_points,
                    handle_points_init,
                    args):
+
+    point_tracking_norm = 1 if args.is_l1_point_tracking else 2
     with torch.no_grad():
         _, _, max_r, max_c = F0.shape
         for i in range(len(handle_points)):
@@ -35,7 +37,7 @@ def point_tracking(F0,
             r1, r2 = max(0,int(pi[0])-args.r_p), min(max_r,int(pi[0])+args.r_p+1)
             c1, c2 = max(0,int(pi[1])-args.r_p), min(max_c,int(pi[1])+args.r_p+1)
             F1_neighbor = F1[:, :, r1:r2, c1:c2]
-            all_dist = (f0.unsqueeze(dim=-1).unsqueeze(dim=-1) - F1_neighbor).abs().sum(dim=1)
+            all_dist = torch.norm(f0.unsqueeze(dim=-1).unsqueeze(dim=-1) - F1_neighbor, p=point_tracking_norm, dim=1)
             all_dist = all_dist.squeeze(dim=0)
             row, col = divmod(all_dist.argmin().item(), all_dist.shape[-1])
             # handle_points[i][0] = pi[0] - args.r_p + row
@@ -107,6 +109,10 @@ def drag_diffusion_update(model,
     interp_mask = F.interpolate(mask, (init_code.shape[2],init_code.shape[3]), mode='nearest')
     using_mask = interp_mask.sum() != 0.0
 
+    # use L1 or L2 norm
+    loss_func_motion = F.l1_loss if args.is_l1_motion_supervision else F.mse_loss
+    mask_norm = 1 if args.is_l1_mask else 2
+
     # prepare amp scaler for mixed-precision training
     scaler = torch.cuda.amp.GradScaler()
     for step_idx in range(args.n_pix_step):
@@ -145,11 +151,11 @@ def drag_diffusion_update(model,
                 # original code, without boundary protection
                 # f0_patch = F1[:,:,int(pi[0])-args.r_m:int(pi[0])+args.r_m+1, int(pi[1])-args.r_m:int(pi[1])+args.r_m+1].detach()
                 # f1_patch = interpolate_feature_patch(F1, pi[0] + di[0], pi[1] + di[1], args.r_m)
-                loss += ((2*args.r_m+1)**2)*F.l1_loss(f0_patch, f1_patch)
+                loss += ((2*args.r_m+1)**2)*loss_func_motion(f0_patch, f1_patch)
 
             # masked region must stay unchanged
             if using_mask:
-                loss += args.lam * ((x_prev_updated-x_prev_0)*(1.0-interp_mask)).abs().sum()
+                loss += args.lam * torch.norm((x_prev_updated-x_prev_0)*(1.0-interp_mask), p=mask_norm)
             # loss += args.lam * ((init_code_orig-init_code)*(1.0-interp_mask)).abs().sum()
             print('loss total=%f'%(loss.item()))
 

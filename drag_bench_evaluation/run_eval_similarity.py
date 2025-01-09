@@ -19,6 +19,8 @@
 # evaluate similarity between images before and after dragging
 import argparse
 import os
+from collections import defaultdict
+
 from einops import rearrange
 import numpy as np
 import PIL
@@ -54,23 +56,23 @@ if __name__ == '__main__':
     # clip_model, clip_preprocess = (clip.lo ("ViT-B/32", device=device, jit=False))
 
     all_category = [
-        #'art_work',
-        # 'land_scape',
-        # 'building_city_view',
-        # 'building_countryside_view',
-         'animals',
-        # 'human_head',
-        # 'human_upper_body',
-        # 'human_full_body',
-        # 'interior_design',
-        # 'other_objects',
+        'art_work',
+        'land_scape',
+        'building_city_view',
+        'building_countryside_view',
+        'animals',
+        'human_head',
+        'human_upper_body',
+        'human_full_body',
+        'interior_design',
+        'other_objects',
     ]
 
     original_img_root = 'drag_bench_data/'
 
     for target_root in args.eval_root:
-        all_lpips = []
-        all_clip_sim = []
+        all_lpips = defaultdict(list)
+        all_clip_sim = defaultdict(list)
         for cat in all_category:
             for file_name in os.listdir(os.path.join(original_img_root, cat)):
                 if file_name == '.DS_Store':
@@ -90,7 +92,7 @@ if __name__ == '__main__':
                     source_image_224x224 = F.interpolate(source_image, (224,224), mode='bilinear')
                     dragged_image_224x224 = F.interpolate(dragged_image, (224,224), mode='bilinear')
                     cur_lpips = loss_fn_alex(source_image_224x224, dragged_image_224x224)
-                    all_lpips.append(cur_lpips.item())
+                    all_lpips[cat].append(cur_lpips.item())
 
                 # compute CLIP similarity
                 source_image_clip = clip_preprocess(source_image_PIL).unsqueeze(0).to(device)
@@ -102,9 +104,14 @@ if __name__ == '__main__':
                     source_feature /= source_feature.norm(dim=-1, keepdim=True)
                     dragged_feature /= dragged_feature.norm(dim=-1, keepdim=True)
                     cur_clip_sim = (source_feature * dragged_feature).sum()
-                    all_clip_sim.append(cur_clip_sim.cpu().numpy())
+                    all_clip_sim[cat].append(cur_clip_sim.cpu().numpy())
             # print(f"all lpips: {all_lpips}")
             # print(f"all clips sim: {all_clip_sim}")
-        print(target_root)
-        print('avg lpips: ', 1 - np.mean(all_lpips))
-        print('avg clip sim', np.mean(all_clip_sim))
+
+        print('\navg lpips per category:')
+        for key, values in all_lpips.items():
+            print(f'\t{key}: {1-np.mean(values)}')
+
+        print('\navg clip similarity per category:')
+        for key, values in all_clip_sim.items():
+            print(f'\t{key}: {np.mean(values)}')
