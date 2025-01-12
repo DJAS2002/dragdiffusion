@@ -51,6 +51,9 @@ def preprocess_image(image,
     image = image.to(device)
     return image
 
+def str2bool(v):
+    return v.lower() in ('yes', 'true', 't', '1')
+
 # copy the run_drag function to here
 def run_drag(source_image,
              # image_with_clicks,
@@ -216,9 +219,9 @@ if __name__ == '__main__':
     parser.add_argument('--inv_strength', type=float, default = 0.7, help='inversion strength')
     parser.add_argument('--latent_lr', type=float, default=0.01, help='latent learning rate')
     parser.add_argument('--unet_feature_idx', type=int, default=3, help='feature idx of unet features')
-    parser.add_argument('--is_l1_supervision_loss', type=bool, default=True, help='Use L1 loss in motion supervision loss')
-    parser.add_argument('--is_l1_point_tracking', type=bool, default=True, help='Use L1 in point tracking')
-    parser.add_argument('--is_l1_mask', type=bool, default=True, help='Use L1 loss for mask')
+    parser.add_argument('--is_l1_supervision_loss', type=str2bool, default=True, help='Use L1 loss in motion supervision loss')
+    parser.add_argument('--is_l1_point_tracking', type=str2bool, default=True, help='Use L1 in point tracking')
+    parser.add_argument('--is_l1_mask', type=str2bool, default=True, help='Use L1 loss for mask')
 
     args = parser.parse_args()
 
