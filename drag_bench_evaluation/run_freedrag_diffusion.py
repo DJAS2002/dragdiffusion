@@ -40,7 +40,7 @@ import sys
 sys.path.insert(0, '../')
 from drag_pipeline import DragPipeline
 
-from utils.drag_utils import drag_diffusion_update
+from utils.freedrag_utils import freedrag_update
 from utils.attn_utils import register_attention_editor_diffusers, MutualSelfAttentionControl
 
 
@@ -61,15 +61,18 @@ def run_drag(source_image,
              lam,
              latent_lr,
              unet_feature_idx,
-             n_pix_step,
              model_path,
              vae_path,
              lora_path,
              start_step,
              start_layer,
-             is_l1_motion_supervision,
-             is_l1_point_tracking,
-             is_l1_mask
+             l_expected,
+             d_max,
+             max_step,
+             reduce_dims
+             # is_l1_motion_supervision,
+             # is_l1_point_tracking,
+             # is_l1_mask
              # save_dir="./results"
     ):
     # initialize model
@@ -94,9 +97,15 @@ def run_drag(source_image,
 
     args = SimpleNamespace()
 
-    args.is_l1_motion_supervision = is_l1_motion_supervision
-    args.is_l1_point_tracking = is_l1_point_tracking
-    args.is_l1_mask = is_l1_mask
+    # args.is_l1_motion_supervision = is_l1_motion_supervision
+    # args.is_l1_point_tracking = is_l1_point_tracking
+    # args.is_l1_mask = is_l1_mask
+
+    args.reduce_dims = reduce_dims
+
+    args.l_expected = l_expected
+    args.d_max = d_max
+    args.max_step = max_step
 
     args.prompt = prompt
     args.points = points
@@ -111,7 +120,6 @@ def run_drag(source_image,
     args.lam = lam
 
     args.lr = latent_lr
-    args.n_pix_step = n_pix_step
 
     full_h, full_w = source_image.shape[:2]
     args.sup_res_h = int(0.5*full_h)
@@ -163,8 +171,8 @@ def run_drag(source_image,
 
     # feature shape: [1280,16,16], [1280,32,32], [640,64,64], [320,64,64]
     # update according to the given supervision
-    updated_init_code = drag_diffusion_update(model, init_code,
-        None, t, handle_points, target_points, mask, args)
+    updated_init_code = freedrag_update(model, init_code,
+        t, handle_points, target_points, mask, args)
 
     # hijack the attention module
     # inject the reference branch to guide the generation
@@ -216,12 +224,18 @@ if __name__ == '__main__':
     parser.add_argument('--inv_strength', type=float, default = 0.7, help='inversion strength')
     parser.add_argument('--latent_lr', type=float, default=0.01, help='latent learning rate')
     parser.add_argument('--unet_feature_idx', type=int, default=3, help='feature idx of unet features')
-    parser.add_argument('--is_l1_supervision_loss', type=bool, default=True, help='Use L1 loss in motion supervision loss')
-    parser.add_argument('--is_l1_point_tracking', type=bool, default=True, help='Use L1 in point tracking')
-    parser.add_argument('--is_l1_mask', type=bool, default=True, help='Use L1 loss for mask')
-    parser.add_argument('--n_pix_step', type=int, default=300, help='Number of latent optimization steps for handle points')
+    parser.add_argument('--l_expected', type=float, default=1.0, help='the expected initial loss for each dragging')
+    parser.add_argument('--d_max', type=float, default=5.0, help='the max motion distance for each dragging')
+    parser.add_argument('--max_step', type=int, default=300, help='Number of maximum dragging steps')
+    parser.add_argument('--reduce_dims', nargs='*', type=int, help='dims to reduce in free drag motion supervision')
+
+    # parser.add_argument('--is_l1_supervision_loss', type=bool, default=True, help='Use L1 loss in motion supervision loss')
+    # parser.add_argument('--is_l1_point_tracking', type=bool, default=True, help='Use L1 in point tracking')
+    # parser.add_argument('--is_l1_mask', type=bool, default=True, help='Use L1 loss for mask')
 
     args = parser.parse_args()
+
+    args.reduce_dims = tuple(args.reduce_dims) if len(args.reduce_dims) != 0 else tuple()
 
     all_category = [
         'art_work',
@@ -239,15 +253,16 @@ if __name__ == '__main__':
     # assume root_dir and lora_dir are valid directory
     root_dir = 'drag_bench_data'
     lora_dir = 'drag_bench_lora'
-    result_dir = 'drag_diffusion_res' + \
+    result_dir = 'freedrag_diffusion_res' + \
         '_' + str(args.lora_steps) + \
         '_' + str(args.inv_strength) + \
         '_' + str(args.latent_lr) + \
         '_' + str(args.unet_feature_idx) + \
-        '_L1m=' + str(args.is_l1_supervision_loss) + \
-        '_L1p=' + str(args.is_l1_point_tracking) + \
-        '_L1mask=' + str(args.is_l1_mask) + \
-        '_n_step=' + str(args.n_pix_step)
+        '_reduce_dims=' + ('None' if len(args.reduce_dims) == 0 \
+        else '(' + '-'.join(str(x) for x in args.reduce_dims)) + ')' + \
+        '_n_step=' + str(args.max_step) +\
+        '_d_max=' + str(args.d_max) + \
+        '_l_expected=' + str(args.l_expected)
 
         # mkdir if necessary
     if not os.path.isdir(result_dir):
@@ -283,18 +298,21 @@ if __name__ == '__main__':
                 prompt,
                 points,
                 inversion_strength=args.inv_strength,
-                lam=0.1,
+                lam=10,
                 latent_lr=args.latent_lr,
                 unet_feature_idx=args.unet_feature_idx,
-                n_pix_step=args.n_pix_step,
                 model_path="runwayml/stable-diffusion-v1-5",
                 vae_path="default",
                 lora_path=lora_path,
                 start_step=0,
                 start_layer=10,
-                is_l1_motion_supervision=args.is_l1_supervision_loss,
-                is_l1_point_tracking=args.is_l1_point_tracking,
-                is_l1_mask=args.is_l1_mask,
+                l_expected=args.l_expected,
+                d_max=args.d_max,
+                max_step=args.max_step,
+                reduce_dims=args.reduce_dims,
+                # is_l1_motion_supervision=args.is_l1_supervision_loss,
+                # is_l1_point_tracking=args.is_l1_point_tracking,
+                # is_l1_mask=args.is_l1_mask,
             )
             save_dir = os.path.join(result_dir, cat, sample_name)
             if not os.path.isdir(save_dir):
