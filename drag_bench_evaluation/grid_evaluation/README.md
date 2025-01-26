@@ -2,6 +2,8 @@
 
 ## Step 1: Run Evaluation Metrics
 
+You only need to do this first step onces if you conduct new experiments. It will generate a csv file which you can use for the analysis.
+
 1. Navigate to the `drag_bench_evaluation/grid_evaluation` directory:
     ```bash
     cd drag_bench_evaluation/grid_evaluation
