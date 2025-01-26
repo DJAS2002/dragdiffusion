@@ -1,34 +1,34 @@
 Category,Metric,Value,Eval_Root
-art_work,avg LPIPS,0.8676576509273478,../FreeDrag_experiments/drag_diffusion_res_80_0.7_0.01_3_L1m=True_L1p=True_L1mask=True_n_step=300
-land_scape,avg LPIPS,0.851874191313982,../FreeDrag_experiments/drag_diffusion_res_80_0.7_0.01_3_L1m=True_L1p=True_L1mask=True_n_step=300
-building_city_view,avg LPIPS,0.8656287475356034,../FreeDrag_experiments/drag_diffusion_res_80_0.7_0.01_3_L1m=True_L1p=True_L1mask=True_n_step=300
-building_countryside_view,avg LPIPS,0.8726612414148721,../FreeDrag_experiments/drag_diffusion_res_80_0.7_0.01_3_L1m=True_L1p=True_L1mask=True_n_step=300
-animals,avg LPIPS,0.8463296060450375,../FreeDrag_experiments/drag_diffusion_res_80_0.7_0.01_3_L1m=True_L1p=True_L1mask=True_n_step=300
-human_head,avg LPIPS,0.830569064617157,../FreeDrag_experiments/drag_diffusion_res_80_0.7_0.01_3_L1m=True_L1p=True_L1mask=True_n_step=300
-human_upper_body,avg LPIPS,0.8760622262954711,../FreeDrag_experiments/drag_diffusion_res_80_0.7_0.01_3_L1m=True_L1p=True_L1mask=True_n_step=300
-human_full_body,avg LPIPS,0.956523041240871,../FreeDrag_experiments/drag_diffusion_res_80_0.7_0.01_3_L1m=True_L1p=True_L1mask=True_n_step=300
-interior_design,avg LPIPS,0.8821006230078637,../FreeDrag_experiments/drag_diffusion_res_80_0.7_0.01_3_L1m=True_L1p=True_L1mask=True_n_step=300
-other_objects,avg LPIPS,0.848682736498969,../FreeDrag_experiments/drag_diffusion_res_80_0.7_0.01_3_L1m=True_L1p=True_L1mask=True_n_step=300
-art_work,avg CLIP similarity,0.970703125,../FreeDrag_experiments/drag_diffusion_res_80_0.7_0.01_3_L1m=True_L1p=True_L1mask=True_n_step=300
-land_scape,avg CLIP similarity,0.97119140625,../FreeDrag_experiments/drag_diffusion_res_80_0.7_0.01_3_L1m=True_L1p=True_L1mask=True_n_step=300
-building_city_view,avg CLIP similarity,0.96875,../FreeDrag_experiments/drag_diffusion_res_80_0.7_0.01_3_L1m=True_L1p=True_L1mask=True_n_step=300
-building_countryside_view,avg CLIP similarity,0.97607421875,../FreeDrag_experiments/drag_diffusion_res_80_0.7_0.01_3_L1m=True_L1p=True_L1mask=True_n_step=300
-animals,avg CLIP similarity,0.97705078125,../FreeDrag_experiments/drag_diffusion_res_80_0.7_0.01_3_L1m=True_L1p=True_L1mask=True_n_step=300
-human_head,avg CLIP similarity,0.97119140625,../FreeDrag_experiments/drag_diffusion_res_80_0.7_0.01_3_L1m=True_L1p=True_L1mask=True_n_step=300
-human_upper_body,avg CLIP similarity,0.970703125,../FreeDrag_experiments/drag_diffusion_res_80_0.7_0.01_3_L1m=True_L1p=True_L1mask=True_n_step=300
-human_full_body,avg CLIP similarity,0.98681640625,../FreeDrag_experiments/drag_diffusion_res_80_0.7_0.01_3_L1m=True_L1p=True_L1mask=True_n_step=300
-interior_design,avg CLIP similarity,0.9794921875,../FreeDrag_experiments/drag_diffusion_res_80_0.7_0.01_3_L1m=True_L1p=True_L1mask=True_n_step=300
-other_objects,avg CLIP similarity,0.97412109375,../FreeDrag_experiments/drag_diffusion_res_80_0.7_0.01_3_L1m=True_L1p=True_L1mask=True_n_step=300
-art_work,avg MD,35.603589967239735,../FreeDrag_experiments/drag_diffusion_res_80_0.7_0.01_3_L1m=True_L1p=True_L1mask=True_n_step=300
-land_scape,avg MD,36.49386940331295,../FreeDrag_experiments/drag_diffusion_res_80_0.7_0.01_3_L1m=True_L1p=True_L1mask=True_n_step=300
-building_city_view,avg MD,40.89156140932223,../FreeDrag_experiments/drag_diffusion_res_80_0.7_0.01_3_L1m=True_L1p=True_L1mask=True_n_step=300
-building_countryside_view,avg MD,43.983330386025564,../FreeDrag_experiments/drag_diffusion_res_80_0.7_0.01_3_L1m=True_L1p=True_L1mask=True_n_step=300
-animals,avg MD,42.24081438779831,../FreeDrag_experiments/drag_diffusion_res_80_0.7_0.01_3_L1m=True_L1p=True_L1mask=True_n_step=300
-human_head,avg MD,34.606360912323,../FreeDrag_experiments/drag_diffusion_res_80_0.7_0.01_3_L1m=True_L1p=True_L1mask=True_n_step=300
-human_upper_body,avg MD,35.043242348564995,../FreeDrag_experiments/drag_diffusion_res_80_0.7_0.01_3_L1m=True_L1p=True_L1mask=True_n_step=300
-human_full_body,avg MD,33.082960456609726,../FreeDrag_experiments/drag_diffusion_res_80_0.7_0.01_3_L1m=True_L1p=True_L1mask=True_n_step=300
-interior_design,avg MD,18.84278148651123,../FreeDrag_experiments/drag_diffusion_res_80_0.7_0.01_3_L1m=True_L1p=True_L1mask=True_n_step=300
-other_objects,avg MD,32.25487593368248,../FreeDrag_experiments/drag_diffusion_res_80_0.7_0.01_3_L1m=True_L1p=True_L1mask=True_n_step=300
+art_work,avg LPIPS,0.8676576509273478,../FreeDrag_experiments/drag_diffusion_res_80_0.7_0.01_3_n_step=300
+land_scape,avg LPIPS,0.851874191313982,../FreeDrag_experiments/drag_diffusion_res_80_0.7_0.01_3_n_step=300
+building_city_view,avg LPIPS,0.8656287475356034,../FreeDrag_experiments/drag_diffusion_res_80_0.7_0.01_3_n_step=300
+building_countryside_view,avg LPIPS,0.8726612414148721,../FreeDrag_experiments/drag_diffusion_res_80_0.7_0.01_3_n_step=300
+animals,avg LPIPS,0.8463296060450375,../FreeDrag_experiments/drag_diffusion_res_80_0.7_0.01_3_n_step=300
+human_head,avg LPIPS,0.830569064617157,../FreeDrag_experiments/drag_diffusion_res_80_0.7_0.01_3_n_step=300
+human_upper_body,avg LPIPS,0.8760622262954711,../FreeDrag_experiments/drag_diffusion_res_80_0.7_0.01_3_n_step=300
+human_full_body,avg LPIPS,0.956523041240871,../FreeDrag_experiments/drag_diffusion_res_80_0.7_0.01_3_n_step=300
+interior_design,avg LPIPS,0.8821006230078637,../FreeDrag_experiments/drag_diffusion_res_80_0.7_0.01_3_n_step=300
+other_objects,avg LPIPS,0.848682736498969,../FreeDrag_experiments/drag_diffusion_res_80_0.7_0.01_3_n_step=300
+art_work,avg CLIP similarity,0.970703125,../FreeDrag_experiments/drag_diffusion_res_80_0.7_0.01_3_n_step=300
+land_scape,avg CLIP similarity,0.97119140625,../FreeDrag_experiments/drag_diffusion_res_80_0.7_0.01_3_n_step=300
+building_city_view,avg CLIP similarity,0.96875,../FreeDrag_experiments/drag_diffusion_res_80_0.7_0.01_3_n_step=300
+building_countryside_view,avg CLIP similarity,0.97607421875,../FreeDrag_experiments/drag_diffusion_res_80_0.7_0.01_3_n_step=300
+animals,avg CLIP similarity,0.97705078125,../FreeDrag_experiments/drag_diffusion_res_80_0.7_0.01_3_n_step=300
+human_head,avg CLIP similarity,0.97119140625,../FreeDrag_experiments/drag_diffusion_res_80_0.7_0.01_3_n_step=300
+human_upper_body,avg CLIP similarity,0.970703125,../FreeDrag_experiments/drag_diffusion_res_80_0.7_0.01_3_n_step=300
+human_full_body,avg CLIP similarity,0.98681640625,../FreeDrag_experiments/drag_diffusion_res_80_0.7_0.01_3_n_step=300
+interior_design,avg CLIP similarity,0.9794921875,../FreeDrag_experiments/drag_diffusion_res_80_0.7_0.01_3_n_step=300
+other_objects,avg CLIP similarity,0.97412109375,../FreeDrag_experiments/drag_diffusion_res_80_0.7_0.01_3_n_step=300
+art_work,avg MD,35.603589967239735,../FreeDrag_experiments/drag_diffusion_res_80_0.7_0.01_3_n_step=300
+land_scape,avg MD,36.49386940331295,../FreeDrag_experiments/drag_diffusion_res_80_0.7_0.01_3_n_step=300
+building_city_view,avg MD,40.89156140932223,../FreeDrag_experiments/drag_diffusion_res_80_0.7_0.01_3_n_step=300
+building_countryside_view,avg MD,43.983330386025564,../FreeDrag_experiments/drag_diffusion_res_80_0.7_0.01_3_n_step=300
+animals,avg MD,42.24081438779831,../FreeDrag_experiments/drag_diffusion_res_80_0.7_0.01_3_n_step=300
+human_head,avg MD,34.606360912323,../FreeDrag_experiments/drag_diffusion_res_80_0.7_0.01_3_n_step=300
+human_upper_body,avg MD,35.043242348564995,../FreeDrag_experiments/drag_diffusion_res_80_0.7_0.01_3_n_step=300
+human_full_body,avg MD,33.082960456609726,../FreeDrag_experiments/drag_diffusion_res_80_0.7_0.01_3_n_step=300
+interior_design,avg MD,18.84278148651123,../FreeDrag_experiments/drag_diffusion_res_80_0.7_0.01_3_n_step=300
+other_objects,avg MD,32.25487593368248,../FreeDrag_experiments/drag_diffusion_res_80_0.7_0.01_3_n_step=300
 art_work,avg LPIPS,0.8866677663155964,../FreeDrag_experiments/freedrag_diffusion_res_80_0.7_0.01_3_n_step=300_d_max=5.0_l_expected=1.0
 land_scape,avg LPIPS,0.8664764125238765,../FreeDrag_experiments/freedrag_diffusion_res_80_0.7_0.01_3_n_step=300_d_max=5.0_l_expected=1.0
 building_city_view,avg LPIPS,0.8990498275629112,../FreeDrag_experiments/freedrag_diffusion_res_80_0.7_0.01_3_n_step=300_d_max=5.0_l_expected=1.0

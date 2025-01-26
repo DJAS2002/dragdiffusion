@@ -23,8 +23,11 @@
 
 ## Step 3: Compare Images
 
-1. Open the Jupyter Notebook `compare_images.ipynb`.
-2. Use this notebook to generate image grids comparing the original images with the dragged results and intended targets.
+1. Run the Gradio ui, to select images to compare:
+    ```bash
+    python selectImages_ui.py
+    ```
+2. Select the desired folders, categories and specific images or all of them within a certain category.
 
 ---
 

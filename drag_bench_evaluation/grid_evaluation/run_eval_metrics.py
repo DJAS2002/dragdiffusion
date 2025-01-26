@@ -49,7 +49,7 @@ def preprocess_image(image, device):
 if __name__ == '__main__':
     # Hardcoded directories for evaluation
     eval_roots = [
-        '../FreeDrag_experiments/drag_diffusion_res_80_0.7_0.01_3_L1m=True_L1p=True_L1mask=True_n_step=300',
+        '../FreeDrag_experiments/drag_diffusion_res_80_0.7_0.01_3_n_step=300',
         '../FreeDrag_experiments/freedrag_diffusion_res_80_0.7_0.01_3_n_step=300_d_max=5.0_l_expected=1.0'
         #'../L1_L2_experiments/drag_diffusion_res_80_0.7_0.01_3_L1m=False_L1p=False_L1mask=False',
         #'../L1_L2_experiments/drag_diffusion_res_80_0.7_0.01_3_L1m=False_L1p=False_L1mask=True',
