@@ -1,0 +1,241 @@
+Category,Metric,Value,Eval_Root
+art_work,avg LPIPS,0.7915853985452226,../L1_L2_experiments/drag_diffusion_res_80_0.7_0.01_3_L1m=False_L1p=False_L1mask=False
+land_scape,avg LPIPS,0.7722835002297705,../L1_L2_experiments/drag_diffusion_res_80_0.7_0.01_3_L1m=False_L1p=False_L1mask=False
+building_city_view,avg LPIPS,0.7898005222280821,../L1_L2_experiments/drag_diffusion_res_80_0.7_0.01_3_L1m=False_L1p=False_L1mask=False
+building_countryside_view,avg LPIPS,0.8092965984886342,../L1_L2_experiments/drag_diffusion_res_80_0.7_0.01_3_L1m=False_L1p=False_L1mask=False
+animals,avg LPIPS,0.7708917727693916,../L1_L2_experiments/drag_diffusion_res_80_0.7_0.01_3_L1m=False_L1p=False_L1mask=False
+human_head,avg LPIPS,0.78613121509552,../L1_L2_experiments/drag_diffusion_res_80_0.7_0.01_3_L1m=False_L1p=False_L1mask=False
+human_upper_body,avg LPIPS,0.7969857141375541,../L1_L2_experiments/drag_diffusion_res_80_0.7_0.01_3_L1m=False_L1p=False_L1mask=False
+human_full_body,avg LPIPS,0.8691728699952364,../L1_L2_experiments/drag_diffusion_res_80_0.7_0.01_3_L1m=False_L1p=False_L1mask=False
+interior_design,avg LPIPS,0.805077688768506,../L1_L2_experiments/drag_diffusion_res_80_0.7_0.01_3_L1m=False_L1p=False_L1mask=False
+other_objects,avg LPIPS,0.7979527588401522,../L1_L2_experiments/drag_diffusion_res_80_0.7_0.01_3_L1m=False_L1p=False_L1mask=False
+art_work,avg CLIP similarity,0.9638671875,../L1_L2_experiments/drag_diffusion_res_80_0.7_0.01_3_L1m=False_L1p=False_L1mask=False
+land_scape,avg CLIP similarity,0.96826171875,../L1_L2_experiments/drag_diffusion_res_80_0.7_0.01_3_L1m=False_L1p=False_L1mask=False
+building_city_view,avg CLIP similarity,0.958984375,../L1_L2_experiments/drag_diffusion_res_80_0.7_0.01_3_L1m=False_L1p=False_L1mask=False
+building_countryside_view,avg CLIP similarity,0.96435546875,../L1_L2_experiments/drag_diffusion_res_80_0.7_0.01_3_L1m=False_L1p=False_L1mask=False
+animals,avg CLIP similarity,0.96826171875,../L1_L2_experiments/drag_diffusion_res_80_0.7_0.01_3_L1m=False_L1p=False_L1mask=False
+human_head,avg CLIP similarity,0.96630859375,../L1_L2_experiments/drag_diffusion_res_80_0.7_0.01_3_L1m=False_L1p=False_L1mask=False
+human_upper_body,avg CLIP similarity,0.96728515625,../L1_L2_experiments/drag_diffusion_res_80_0.7_0.01_3_L1m=False_L1p=False_L1mask=False
+human_full_body,avg CLIP similarity,0.966796875,../L1_L2_experiments/drag_diffusion_res_80_0.7_0.01_3_L1m=False_L1p=False_L1mask=False
+interior_design,avg CLIP similarity,0.974609375,../L1_L2_experiments/drag_diffusion_res_80_0.7_0.01_3_L1m=False_L1p=False_L1mask=False
+other_objects,avg CLIP similarity,0.97021484375,../L1_L2_experiments/drag_diffusion_res_80_0.7_0.01_3_L1m=False_L1p=False_L1mask=False
+art_work,avg MD,37.96191550410071,../L1_L2_experiments/drag_diffusion_res_80_0.7_0.01_3_L1m=False_L1p=False_L1mask=False
+land_scape,avg MD,45.991171179146605,../L1_L2_experiments/drag_diffusion_res_80_0.7_0.01_3_L1m=False_L1p=False_L1mask=False
+building_city_view,avg MD,40.186124522511555,../L1_L2_experiments/drag_diffusion_res_80_0.7_0.01_3_L1m=False_L1p=False_L1mask=False
+building_countryside_view,avg MD,40.00087951640693,../L1_L2_experiments/drag_diffusion_res_80_0.7_0.01_3_L1m=False_L1p=False_L1mask=False
+animals,avg MD,41.26350137591362,../L1_L2_experiments/drag_diffusion_res_80_0.7_0.01_3_L1m=False_L1p=False_L1mask=False
+human_head,avg MD,25.478132149752447,../L1_L2_experiments/drag_diffusion_res_80_0.7_0.01_3_L1m=False_L1p=False_L1mask=False
+human_upper_body,avg MD,35.07334989971585,../L1_L2_experiments/drag_diffusion_res_80_0.7_0.01_3_L1m=False_L1p=False_L1mask=False
+human_full_body,avg MD,13.200316071510315,../L1_L2_experiments/drag_diffusion_res_80_0.7_0.01_3_L1m=False_L1p=False_L1mask=False
+interior_design,avg MD,26.149548830986024,../L1_L2_experiments/drag_diffusion_res_80_0.7_0.01_3_L1m=False_L1p=False_L1mask=False
+other_objects,avg MD,43.584701458613075,../L1_L2_experiments/drag_diffusion_res_80_0.7_0.01_3_L1m=False_L1p=False_L1mask=False
+art_work,avg LPIPS,0.8833149505513055,../L1_L2_experiments/drag_diffusion_res_80_0.7_0.01_3_L1m=False_L1p=False_L1mask=True
+land_scape,avg LPIPS,0.8751457997343757,../L1_L2_experiments/drag_diffusion_res_80_0.7_0.01_3_L1m=False_L1p=False_L1mask=True
+building_city_view,avg LPIPS,0.8833761270202342,../L1_L2_experiments/drag_diffusion_res_80_0.7_0.01_3_L1m=False_L1p=False_L1mask=True
+building_countryside_view,avg LPIPS,0.889058876443993,../L1_L2_experiments/drag_diffusion_res_80_0.7_0.01_3_L1m=False_L1p=False_L1mask=True
+animals,avg LPIPS,0.8689278709702194,../L1_L2_experiments/drag_diffusion_res_80_0.7_0.01_3_L1m=False_L1p=False_L1mask=True
+human_head,avg LPIPS,0.8548722252249717,../L1_L2_experiments/drag_diffusion_res_80_0.7_0.01_3_L1m=False_L1p=False_L1mask=True
+human_upper_body,avg LPIPS,0.8890623264014721,../L1_L2_experiments/drag_diffusion_res_80_0.7_0.01_3_L1m=False_L1p=False_L1mask=True
+human_full_body,avg LPIPS,0.9478922955691814,../L1_L2_experiments/drag_diffusion_res_80_0.7_0.01_3_L1m=False_L1p=False_L1mask=True
+interior_design,avg LPIPS,0.8950921731069684,../L1_L2_experiments/drag_diffusion_res_80_0.7_0.01_3_L1m=False_L1p=False_L1mask=True
+other_objects,avg LPIPS,0.8730709192476103,../L1_L2_experiments/drag_diffusion_res_80_0.7_0.01_3_L1m=False_L1p=False_L1mask=True
+art_work,avg CLIP similarity,0.97314453125,../L1_L2_experiments/drag_diffusion_res_80_0.7_0.01_3_L1m=False_L1p=False_L1mask=True
+land_scape,avg CLIP similarity,0.9794921875,../L1_L2_experiments/drag_diffusion_res_80_0.7_0.01_3_L1m=False_L1p=False_L1mask=True
+building_city_view,avg CLIP similarity,0.96826171875,../L1_L2_experiments/drag_diffusion_res_80_0.7_0.01_3_L1m=False_L1p=False_L1mask=True
+building_countryside_view,avg CLIP similarity,0.9765625,../L1_L2_experiments/drag_diffusion_res_80_0.7_0.01_3_L1m=False_L1p=False_L1mask=True
+animals,avg CLIP similarity,0.97900390625,../L1_L2_experiments/drag_diffusion_res_80_0.7_0.01_3_L1m=False_L1p=False_L1mask=True
+human_head,avg CLIP similarity,0.97509765625,../L1_L2_experiments/drag_diffusion_res_80_0.7_0.01_3_L1m=False_L1p=False_L1mask=True
+human_upper_body,avg CLIP similarity,0.97412109375,../L1_L2_experiments/drag_diffusion_res_80_0.7_0.01_3_L1m=False_L1p=False_L1mask=True
+human_full_body,avg CLIP similarity,0.9755859375,../L1_L2_experiments/drag_diffusion_res_80_0.7_0.01_3_L1m=False_L1p=False_L1mask=True
+interior_design,avg CLIP similarity,0.98291015625,../L1_L2_experiments/drag_diffusion_res_80_0.7_0.01_3_L1m=False_L1p=False_L1mask=True
+other_objects,avg CLIP similarity,0.97998046875,../L1_L2_experiments/drag_diffusion_res_80_0.7_0.01_3_L1m=False_L1p=False_L1mask=True
+art_work,avg MD,31.863239332687023,../L1_L2_experiments/drag_diffusion_res_80_0.7_0.01_3_L1m=False_L1p=False_L1mask=True
+land_scape,avg MD,39.179797484956936,../L1_L2_experiments/drag_diffusion_res_80_0.7_0.01_3_L1m=False_L1p=False_L1mask=True
+building_city_view,avg MD,27.80369085218848,../L1_L2_experiments/drag_diffusion_res_80_0.7_0.01_3_L1m=False_L1p=False_L1mask=True
+building_countryside_view,avg MD,52.839681250708445,../L1_L2_experiments/drag_diffusion_res_80_0.7_0.01_3_L1m=False_L1p=False_L1mask=True
+animals,avg MD,34.805004097521305,../L1_L2_experiments/drag_diffusion_res_80_0.7_0.01_3_L1m=False_L1p=False_L1mask=True
+human_head,avg MD,34.24207429324879,../L1_L2_experiments/drag_diffusion_res_80_0.7_0.01_3_L1m=False_L1p=False_L1mask=True
+human_upper_body,avg MD,34.93421612845527,../L1_L2_experiments/drag_diffusion_res_80_0.7_0.01_3_L1m=False_L1p=False_L1mask=True
+human_full_body,avg MD,26.371185928583145,../L1_L2_experiments/drag_diffusion_res_80_0.7_0.01_3_L1m=False_L1p=False_L1mask=True
+interior_design,avg MD,26.17185918331146,../L1_L2_experiments/drag_diffusion_res_80_0.7_0.01_3_L1m=False_L1p=False_L1mask=True
+other_objects,avg MD,42.390185448858475,../L1_L2_experiments/drag_diffusion_res_80_0.7_0.01_3_L1m=False_L1p=False_L1mask=True
+art_work,avg LPIPS,0.7938039078776326,../L1_L2_experiments/drag_diffusion_res_80_0.7_0.01_3_L1m=False_L1p=True_L1mask=False
+land_scape,avg LPIPS,0.7764507921581918,../L1_L2_experiments/drag_diffusion_res_80_0.7_0.01_3_L1m=False_L1p=True_L1mask=False
+building_city_view,avg LPIPS,0.796591808043775,../L1_L2_experiments/drag_diffusion_res_80_0.7_0.01_3_L1m=False_L1p=True_L1mask=False
+building_countryside_view,avg LPIPS,0.8134448257359591,../L1_L2_experiments/drag_diffusion_res_80_0.7_0.01_3_L1m=False_L1p=True_L1mask=False
+animals,avg LPIPS,0.7801937278360128,../L1_L2_experiments/drag_diffusion_res_80_0.7_0.01_3_L1m=False_L1p=True_L1mask=False
+human_head,avg LPIPS,0.786441458761692,../L1_L2_experiments/drag_diffusion_res_80_0.7_0.01_3_L1m=False_L1p=True_L1mask=False
+human_upper_body,avg LPIPS,0.7911862425506115,../L1_L2_experiments/drag_diffusion_res_80_0.7_0.01_3_L1m=False_L1p=True_L1mask=False
+human_full_body,avg LPIPS,0.8689558349549771,../L1_L2_experiments/drag_diffusion_res_80_0.7_0.01_3_L1m=False_L1p=True_L1mask=False
+interior_design,avg LPIPS,0.8227451328188181,../L1_L2_experiments/drag_diffusion_res_80_0.7_0.01_3_L1m=False_L1p=True_L1mask=False
+other_objects,avg LPIPS,0.7930935245539461,../L1_L2_experiments/drag_diffusion_res_80_0.7_0.01_3_L1m=False_L1p=True_L1mask=False
+art_work,avg CLIP similarity,0.96240234375,../L1_L2_experiments/drag_diffusion_res_80_0.7_0.01_3_L1m=False_L1p=True_L1mask=False
+land_scape,avg CLIP similarity,0.96533203125,../L1_L2_experiments/drag_diffusion_res_80_0.7_0.01_3_L1m=False_L1p=True_L1mask=False
+building_city_view,avg CLIP similarity,0.951171875,../L1_L2_experiments/drag_diffusion_res_80_0.7_0.01_3_L1m=False_L1p=True_L1mask=False
+building_countryside_view,avg CLIP similarity,0.9658203125,../L1_L2_experiments/drag_diffusion_res_80_0.7_0.01_3_L1m=False_L1p=True_L1mask=False
+animals,avg CLIP similarity,0.9677734375,../L1_L2_experiments/drag_diffusion_res_80_0.7_0.01_3_L1m=False_L1p=True_L1mask=False
+human_head,avg CLIP similarity,0.96728515625,../L1_L2_experiments/drag_diffusion_res_80_0.7_0.01_3_L1m=False_L1p=True_L1mask=False
+human_upper_body,avg CLIP similarity,0.96826171875,../L1_L2_experiments/drag_diffusion_res_80_0.7_0.01_3_L1m=False_L1p=True_L1mask=False
+human_full_body,avg CLIP similarity,0.96728515625,../L1_L2_experiments/drag_diffusion_res_80_0.7_0.01_3_L1m=False_L1p=True_L1mask=False
+interior_design,avg CLIP similarity,0.97705078125,../L1_L2_experiments/drag_diffusion_res_80_0.7_0.01_3_L1m=False_L1p=True_L1mask=False
+other_objects,avg CLIP similarity,0.97021484375,../L1_L2_experiments/drag_diffusion_res_80_0.7_0.01_3_L1m=False_L1p=True_L1mask=False
+art_work,avg MD,32.49753027184065,../L1_L2_experiments/drag_diffusion_res_80_0.7_0.01_3_L1m=False_L1p=True_L1mask=False
+land_scape,avg MD,37.48658241074661,../L1_L2_experiments/drag_diffusion_res_80_0.7_0.01_3_L1m=False_L1p=True_L1mask=False
+building_city_view,avg MD,51.619627603670445,../L1_L2_experiments/drag_diffusion_res_80_0.7_0.01_3_L1m=False_L1p=True_L1mask=False
+building_countryside_view,avg MD,40.54863241740635,../L1_L2_experiments/drag_diffusion_res_80_0.7_0.01_3_L1m=False_L1p=True_L1mask=False
+animals,avg MD,33.606584534049034,../L1_L2_experiments/drag_diffusion_res_80_0.7_0.01_3_L1m=False_L1p=True_L1mask=False
+human_head,avg MD,25.285796558155734,../L1_L2_experiments/drag_diffusion_res_80_0.7_0.01_3_L1m=False_L1p=True_L1mask=False
+human_upper_body,avg MD,34.25898379749722,../L1_L2_experiments/drag_diffusion_res_80_0.7_0.01_3_L1m=False_L1p=True_L1mask=False
+human_full_body,avg MD,13.648875296115875,../L1_L2_experiments/drag_diffusion_res_80_0.7_0.01_3_L1m=False_L1p=True_L1mask=False
+interior_design,avg MD,25.543735971450804,../L1_L2_experiments/drag_diffusion_res_80_0.7_0.01_3_L1m=False_L1p=True_L1mask=False
+other_objects,avg MD,44.9659561669385,../L1_L2_experiments/drag_diffusion_res_80_0.7_0.01_3_L1m=False_L1p=True_L1mask=False
+art_work,avg LPIPS,0.8812101843633822,../L1_L2_experiments/drag_diffusion_res_80_0.7_0.01_3_L1m=False_L1p=True_L1mask=True
+land_scape,avg LPIPS,0.8800416036762975,../L1_L2_experiments/drag_diffusion_res_80_0.7_0.01_3_L1m=False_L1p=True_L1mask=True
+building_city_view,avg LPIPS,0.8845030023228555,../L1_L2_experiments/drag_diffusion_res_80_0.7_0.01_3_L1m=False_L1p=True_L1mask=True
+building_countryside_view,avg LPIPS,0.8904061938890002,../L1_L2_experiments/drag_diffusion_res_80_0.7_0.01_3_L1m=False_L1p=True_L1mask=True
+animals,avg LPIPS,0.8664028813131154,../L1_L2_experiments/drag_diffusion_res_80_0.7_0.01_3_L1m=False_L1p=True_L1mask=True
+human_head,avg LPIPS,0.8547068148851394,../L1_L2_experiments/drag_diffusion_res_80_0.7_0.01_3_L1m=False_L1p=True_L1mask=True
+human_upper_body,avg LPIPS,0.8896998938173055,../L1_L2_experiments/drag_diffusion_res_80_0.7_0.01_3_L1m=False_L1p=True_L1mask=True
+human_full_body,avg LPIPS,0.9490907903760671,../L1_L2_experiments/drag_diffusion_res_80_0.7_0.01_3_L1m=False_L1p=True_L1mask=True
+interior_design,avg LPIPS,0.9025637926533818,../L1_L2_experiments/drag_diffusion_res_80_0.7_0.01_3_L1m=False_L1p=True_L1mask=True
+other_objects,avg LPIPS,0.8708485659744059,../L1_L2_experiments/drag_diffusion_res_80_0.7_0.01_3_L1m=False_L1p=True_L1mask=True
+art_work,avg CLIP similarity,0.97314453125,../L1_L2_experiments/drag_diffusion_res_80_0.7_0.01_3_L1m=False_L1p=True_L1mask=True
+land_scape,avg CLIP similarity,0.97900390625,../L1_L2_experiments/drag_diffusion_res_80_0.7_0.01_3_L1m=False_L1p=True_L1mask=True
+building_city_view,avg CLIP similarity,0.9697265625,../L1_L2_experiments/drag_diffusion_res_80_0.7_0.01_3_L1m=False_L1p=True_L1mask=True
+building_countryside_view,avg CLIP similarity,0.97705078125,../L1_L2_experiments/drag_diffusion_res_80_0.7_0.01_3_L1m=False_L1p=True_L1mask=True
+animals,avg CLIP similarity,0.9794921875,../L1_L2_experiments/drag_diffusion_res_80_0.7_0.01_3_L1m=False_L1p=True_L1mask=True
+human_head,avg CLIP similarity,0.974609375,../L1_L2_experiments/drag_diffusion_res_80_0.7_0.01_3_L1m=False_L1p=True_L1mask=True
+human_upper_body,avg CLIP similarity,0.9736328125,../L1_L2_experiments/drag_diffusion_res_80_0.7_0.01_3_L1m=False_L1p=True_L1mask=True
+human_full_body,avg CLIP similarity,0.984375,../L1_L2_experiments/drag_diffusion_res_80_0.7_0.01_3_L1m=False_L1p=True_L1mask=True
+interior_design,avg CLIP similarity,0.98388671875,../L1_L2_experiments/drag_diffusion_res_80_0.7_0.01_3_L1m=False_L1p=True_L1mask=True
+other_objects,avg CLIP similarity,0.97998046875,../L1_L2_experiments/drag_diffusion_res_80_0.7_0.01_3_L1m=False_L1p=True_L1mask=True
+art_work,avg MD,33.49737820514413,../L1_L2_experiments/drag_diffusion_res_80_0.7_0.01_3_L1m=False_L1p=True_L1mask=True
+land_scape,avg MD,40.932793831003124,../L1_L2_experiments/drag_diffusion_res_80_0.7_0.01_3_L1m=False_L1p=True_L1mask=True
+building_city_view,avg MD,24.900754242408567,../L1_L2_experiments/drag_diffusion_res_80_0.7_0.01_3_L1m=False_L1p=True_L1mask=True
+building_countryside_view,avg MD,37.08256183351789,../L1_L2_experiments/drag_diffusion_res_80_0.7_0.01_3_L1m=False_L1p=True_L1mask=True
+animals,avg MD,33.1827489733696,../L1_L2_experiments/drag_diffusion_res_80_0.7_0.01_3_L1m=False_L1p=True_L1mask=True
+human_head,avg MD,37.49412654427921,../L1_L2_experiments/drag_diffusion_res_80_0.7_0.01_3_L1m=False_L1p=True_L1mask=True
+human_upper_body,avg MD,34.32098274760776,../L1_L2_experiments/drag_diffusion_res_80_0.7_0.01_3_L1m=False_L1p=True_L1mask=True
+human_full_body,avg MD,25.691341876983643,../L1_L2_experiments/drag_diffusion_res_80_0.7_0.01_3_L1m=False_L1p=True_L1mask=True
+interior_design,avg MD,23.138245782852174,../L1_L2_experiments/drag_diffusion_res_80_0.7_0.01_3_L1m=False_L1p=True_L1mask=True
+other_objects,avg MD,41.76854270917398,../L1_L2_experiments/drag_diffusion_res_80_0.7_0.01_3_L1m=False_L1p=True_L1mask=True
+art_work,avg LPIPS,0.7935736653528043,../L1_L2_experiments/drag_diffusion_res_80_0.7_0.01_3_L1m=True_L1p=False_L1mask=False
+land_scape,avg LPIPS,0.7499957457184792,../L1_L2_experiments/drag_diffusion_res_80_0.7_0.01_3_L1m=True_L1p=False_L1mask=False
+building_city_view,avg LPIPS,0.7829084623427618,../L1_L2_experiments/drag_diffusion_res_80_0.7_0.01_3_L1m=True_L1p=False_L1mask=False
+building_countryside_view,avg LPIPS,0.8211513400416482,../L1_L2_experiments/drag_diffusion_res_80_0.7_0.01_3_L1m=True_L1p=False_L1mask=False
+animals,avg LPIPS,0.7826088472269476,../L1_L2_experiments/drag_diffusion_res_80_0.7_0.01_3_L1m=True_L1p=False_L1mask=False
+human_head,avg LPIPS,0.7533296078443528,../L1_L2_experiments/drag_diffusion_res_80_0.7_0.01_3_L1m=True_L1p=False_L1mask=False
+human_upper_body,avg LPIPS,0.8051845688372851,../L1_L2_experiments/drag_diffusion_res_80_0.7_0.01_3_L1m=True_L1p=False_L1mask=False
+human_full_body,avg LPIPS,0.8645396664738655,../L1_L2_experiments/drag_diffusion_res_80_0.7_0.01_3_L1m=True_L1p=False_L1mask=False
+interior_design,avg LPIPS,0.8007721520960331,../L1_L2_experiments/drag_diffusion_res_80_0.7_0.01_3_L1m=True_L1p=False_L1mask=False
+other_objects,avg LPIPS,0.7958927696304662,../L1_L2_experiments/drag_diffusion_res_80_0.7_0.01_3_L1m=True_L1p=False_L1mask=False
+art_work,avg CLIP similarity,0.9619140625,../L1_L2_experiments/drag_diffusion_res_80_0.7_0.01_3_L1m=True_L1p=False_L1mask=False
+land_scape,avg CLIP similarity,0.962890625,../L1_L2_experiments/drag_diffusion_res_80_0.7_0.01_3_L1m=True_L1p=False_L1mask=False
+building_city_view,avg CLIP similarity,0.9501953125,../L1_L2_experiments/drag_diffusion_res_80_0.7_0.01_3_L1m=True_L1p=False_L1mask=False
+building_countryside_view,avg CLIP similarity,0.96630859375,../L1_L2_experiments/drag_diffusion_res_80_0.7_0.01_3_L1m=True_L1p=False_L1mask=False
+animals,avg CLIP similarity,0.96923828125,../L1_L2_experiments/drag_diffusion_res_80_0.7_0.01_3_L1m=True_L1p=False_L1mask=False
+human_head,avg CLIP similarity,0.94482421875,../L1_L2_experiments/drag_diffusion_res_80_0.7_0.01_3_L1m=True_L1p=False_L1mask=False
+human_upper_body,avg CLIP similarity,0.96826171875,../L1_L2_experiments/drag_diffusion_res_80_0.7_0.01_3_L1m=True_L1p=False_L1mask=False
+human_full_body,avg CLIP similarity,0.9609375,../L1_L2_experiments/drag_diffusion_res_80_0.7_0.01_3_L1m=True_L1p=False_L1mask=False
+interior_design,avg CLIP similarity,0.9755859375,../L1_L2_experiments/drag_diffusion_res_80_0.7_0.01_3_L1m=True_L1p=False_L1mask=False
+other_objects,avg CLIP similarity,0.96728515625,../L1_L2_experiments/drag_diffusion_res_80_0.7_0.01_3_L1m=True_L1p=False_L1mask=False
+art_work,avg MD,28.073716873346374,../L1_L2_experiments/drag_diffusion_res_80_0.7_0.01_3_L1m=True_L1p=False_L1mask=False
+land_scape,avg MD,43.8342023717946,../L1_L2_experiments/drag_diffusion_res_80_0.7_0.01_3_L1m=True_L1p=False_L1mask=False
+building_city_view,avg MD,40.8628349420501,../L1_L2_experiments/drag_diffusion_res_80_0.7_0.01_3_L1m=True_L1p=False_L1mask=False
+building_countryside_view,avg MD,40.486057174449066,../L1_L2_experiments/drag_diffusion_res_80_0.7_0.01_3_L1m=True_L1p=False_L1mask=False
+animals,avg MD,33.25118864327669,../L1_L2_experiments/drag_diffusion_res_80_0.7_0.01_3_L1m=True_L1p=False_L1mask=False
+human_head,avg MD,30.088724893682144,../L1_L2_experiments/drag_diffusion_res_80_0.7_0.01_3_L1m=True_L1p=False_L1mask=False
+human_upper_body,avg MD,32.532868438296845,../L1_L2_experiments/drag_diffusion_res_80_0.7_0.01_3_L1m=True_L1p=False_L1mask=False
+human_full_body,avg MD,14.373781368136406,../L1_L2_experiments/drag_diffusion_res_80_0.7_0.01_3_L1m=True_L1p=False_L1mask=False
+interior_design,avg MD,25.585056431293488,../L1_L2_experiments/drag_diffusion_res_80_0.7_0.01_3_L1m=True_L1p=False_L1mask=False
+other_objects,avg MD,45.247841751133954,../L1_L2_experiments/drag_diffusion_res_80_0.7_0.01_3_L1m=True_L1p=False_L1mask=False
+art_work,avg LPIPS,0.879648331073778,../L1_L2_experiments/drag_diffusion_res_80_0.7_0.01_3_L1m=True_L1p=False_L1mask=True
+land_scape,avg LPIPS,0.8776527163995937,../L1_L2_experiments/drag_diffusion_res_80_0.7_0.01_3_L1m=True_L1p=False_L1mask=True
+building_city_view,avg LPIPS,0.8843299517674106,../L1_L2_experiments/drag_diffusion_res_80_0.7_0.01_3_L1m=True_L1p=False_L1mask=True
+building_countryside_view,avg LPIPS,0.8804244969717481,../L1_L2_experiments/drag_diffusion_res_80_0.7_0.01_3_L1m=True_L1p=False_L1mask=True
+animals,avg LPIPS,0.8691795017104595,../L1_L2_experiments/drag_diffusion_res_80_0.7_0.01_3_L1m=True_L1p=False_L1mask=True
+human_head,avg LPIPS,0.8387275174260139,../L1_L2_experiments/drag_diffusion_res_80_0.7_0.01_3_L1m=True_L1p=False_L1mask=True
+human_upper_body,avg LPIPS,0.8899062886834145,../L1_L2_experiments/drag_diffusion_res_80_0.7_0.01_3_L1m=True_L1p=False_L1mask=True
+human_full_body,avg LPIPS,0.9590791160240769,../L1_L2_experiments/drag_diffusion_res_80_0.7_0.01_3_L1m=True_L1p=False_L1mask=True
+interior_design,avg LPIPS,0.9002076607197523,../L1_L2_experiments/drag_diffusion_res_80_0.7_0.01_3_L1m=True_L1p=False_L1mask=True
+other_objects,avg LPIPS,0.8677367043282305,../L1_L2_experiments/drag_diffusion_res_80_0.7_0.01_3_L1m=True_L1p=False_L1mask=True
+art_work,avg CLIP similarity,0.9736328125,../L1_L2_experiments/drag_diffusion_res_80_0.7_0.01_3_L1m=True_L1p=False_L1mask=True
+land_scape,avg CLIP similarity,0.9794921875,../L1_L2_experiments/drag_diffusion_res_80_0.7_0.01_3_L1m=True_L1p=False_L1mask=True
+building_city_view,avg CLIP similarity,0.97314453125,../L1_L2_experiments/drag_diffusion_res_80_0.7_0.01_3_L1m=True_L1p=False_L1mask=True
+building_countryside_view,avg CLIP similarity,0.9775390625,../L1_L2_experiments/drag_diffusion_res_80_0.7_0.01_3_L1m=True_L1p=False_L1mask=True
+animals,avg CLIP similarity,0.97998046875,../L1_L2_experiments/drag_diffusion_res_80_0.7_0.01_3_L1m=True_L1p=False_L1mask=True
+human_head,avg CLIP similarity,0.97314453125,../L1_L2_experiments/drag_diffusion_res_80_0.7_0.01_3_L1m=True_L1p=False_L1mask=True
+human_upper_body,avg CLIP similarity,0.97412109375,../L1_L2_experiments/drag_diffusion_res_80_0.7_0.01_3_L1m=True_L1p=False_L1mask=True
+human_full_body,avg CLIP similarity,0.98486328125,../L1_L2_experiments/drag_diffusion_res_80_0.7_0.01_3_L1m=True_L1p=False_L1mask=True
+interior_design,avg CLIP similarity,0.9833984375,../L1_L2_experiments/drag_diffusion_res_80_0.7_0.01_3_L1m=True_L1p=False_L1mask=True
+other_objects,avg CLIP similarity,0.97802734375,../L1_L2_experiments/drag_diffusion_res_80_0.7_0.01_3_L1m=True_L1p=False_L1mask=True
+art_work,avg MD,32.16945104820784,../L1_L2_experiments/drag_diffusion_res_80_0.7_0.01_3_L1m=True_L1p=False_L1mask=True
+land_scape,avg MD,38.9689160051017,../L1_L2_experiments/drag_diffusion_res_80_0.7_0.01_3_L1m=True_L1p=False_L1mask=True
+building_city_view,avg MD,24.427463578014837,../L1_L2_experiments/drag_diffusion_res_80_0.7_0.01_3_L1m=True_L1p=False_L1mask=True
+building_countryside_view,avg MD,44.693877959737975,../L1_L2_experiments/drag_diffusion_res_80_0.7_0.01_3_L1m=True_L1p=False_L1mask=True
+animals,avg MD,32.26388192921877,../L1_L2_experiments/drag_diffusion_res_80_0.7_0.01_3_L1m=True_L1p=False_L1mask=True
+human_head,avg MD,31.435356813318588,../L1_L2_experiments/drag_diffusion_res_80_0.7_0.01_3_L1m=True_L1p=False_L1mask=True
+human_upper_body,avg MD,33.454375902811684,../L1_L2_experiments/drag_diffusion_res_80_0.7_0.01_3_L1m=True_L1p=False_L1mask=True
+human_full_body,avg MD,17.4114853143692,../L1_L2_experiments/drag_diffusion_res_80_0.7_0.01_3_L1m=True_L1p=False_L1mask=True
+interior_design,avg MD,23.225983951091766,../L1_L2_experiments/drag_diffusion_res_80_0.7_0.01_3_L1m=True_L1p=False_L1mask=True
+other_objects,avg MD,38.757239549248304,../L1_L2_experiments/drag_diffusion_res_80_0.7_0.01_3_L1m=True_L1p=False_L1mask=True
+art_work,avg LPIPS,0.7892755329076733,../L1_L2_experiments/drag_diffusion_res_80_0.7_0.01_3_L1m=True_L1p=True_L1mask=False
+land_scape,avg LPIPS,0.780263267796148,../L1_L2_experiments/drag_diffusion_res_80_0.7_0.01_3_L1m=True_L1p=True_L1mask=False
+building_city_view,avg LPIPS,0.7894652400697981,../L1_L2_experiments/drag_diffusion_res_80_0.7_0.01_3_L1m=True_L1p=True_L1mask=False
+building_countryside_view,avg LPIPS,0.8082092302766714,../L1_L2_experiments/drag_diffusion_res_80_0.7_0.01_3_L1m=True_L1p=True_L1mask=False
+animals,avg LPIPS,0.7722364666871726,../L1_L2_experiments/drag_diffusion_res_80_0.7_0.01_3_L1m=True_L1p=True_L1mask=False
+human_head,avg LPIPS,0.7767244800925255,../L1_L2_experiments/drag_diffusion_res_80_0.7_0.01_3_L1m=True_L1p=True_L1mask=False
+human_upper_body,avg LPIPS,0.7999482087790966,../L1_L2_experiments/drag_diffusion_res_80_0.7_0.01_3_L1m=True_L1p=True_L1mask=False
+human_full_body,avg LPIPS,0.8706776987761259,../L1_L2_experiments/drag_diffusion_res_80_0.7_0.01_3_L1m=True_L1p=True_L1mask=False
+interior_design,avg LPIPS,0.7914284244179726,../L1_L2_experiments/drag_diffusion_res_80_0.7_0.01_3_L1m=True_L1p=True_L1mask=False
+other_objects,avg LPIPS,0.8110884752124548,../L1_L2_experiments/drag_diffusion_res_80_0.7_0.01_3_L1m=True_L1p=True_L1mask=False
+art_work,avg CLIP similarity,0.9638671875,../L1_L2_experiments/drag_diffusion_res_80_0.7_0.01_3_L1m=True_L1p=True_L1mask=False
+land_scape,avg CLIP similarity,0.966796875,../L1_L2_experiments/drag_diffusion_res_80_0.7_0.01_3_L1m=True_L1p=True_L1mask=False
+building_city_view,avg CLIP similarity,0.94775390625,../L1_L2_experiments/drag_diffusion_res_80_0.7_0.01_3_L1m=True_L1p=True_L1mask=False
+building_countryside_view,avg CLIP similarity,0.958984375,../L1_L2_experiments/drag_diffusion_res_80_0.7_0.01_3_L1m=True_L1p=True_L1mask=False
+animals,avg CLIP similarity,0.96875,../L1_L2_experiments/drag_diffusion_res_80_0.7_0.01_3_L1m=True_L1p=True_L1mask=False
+human_head,avg CLIP similarity,0.96484375,../L1_L2_experiments/drag_diffusion_res_80_0.7_0.01_3_L1m=True_L1p=True_L1mask=False
+human_upper_body,avg CLIP similarity,0.96875,../L1_L2_experiments/drag_diffusion_res_80_0.7_0.01_3_L1m=True_L1p=True_L1mask=False
+human_full_body,avg CLIP similarity,0.9697265625,../L1_L2_experiments/drag_diffusion_res_80_0.7_0.01_3_L1m=True_L1p=True_L1mask=False
+interior_design,avg CLIP similarity,0.974609375,../L1_L2_experiments/drag_diffusion_res_80_0.7_0.01_3_L1m=True_L1p=True_L1mask=False
+other_objects,avg CLIP similarity,0.9677734375,../L1_L2_experiments/drag_diffusion_res_80_0.7_0.01_3_L1m=True_L1p=True_L1mask=False
+art_work,avg MD,29.971397832382557,../L1_L2_experiments/drag_diffusion_res_80_0.7_0.01_3_L1m=True_L1p=True_L1mask=False
+land_scape,avg MD,32.7020353448802,../L1_L2_experiments/drag_diffusion_res_80_0.7_0.01_3_L1m=True_L1p=True_L1mask=False
+building_city_view,avg MD,43.20462279203461,../L1_L2_experiments/drag_diffusion_res_80_0.7_0.01_3_L1m=True_L1p=True_L1mask=False
+building_countryside_view,avg MD,43.352977888924734,../L1_L2_experiments/drag_diffusion_res_80_0.7_0.01_3_L1m=True_L1p=True_L1mask=False
+animals,avg MD,41.72322626411915,../L1_L2_experiments/drag_diffusion_res_80_0.7_0.01_3_L1m=True_L1p=True_L1mask=False
+human_head,avg MD,26.888842021717746,../L1_L2_experiments/drag_diffusion_res_80_0.7_0.01_3_L1m=True_L1p=True_L1mask=False
+human_upper_body,avg MD,31.955175558725994,../L1_L2_experiments/drag_diffusion_res_80_0.7_0.01_3_L1m=True_L1p=True_L1mask=False
+human_full_body,avg MD,22.23715654015541,../L1_L2_experiments/drag_diffusion_res_80_0.7_0.01_3_L1m=True_L1p=True_L1mask=False
+interior_design,avg MD,32.28194328069687,../L1_L2_experiments/drag_diffusion_res_80_0.7_0.01_3_L1m=True_L1p=True_L1mask=False
+other_objects,avg MD,42.18981733145537,../L1_L2_experiments/drag_diffusion_res_80_0.7_0.01_3_L1m=True_L1p=True_L1mask=False
+art_work,avg LPIPS,0.8855035749131015,../L1_L2_experiments/drag_diffusion_res_80_0.7_0.01_3_L1m=True_L1p=True_L1mask=True
+land_scape,avg LPIPS,0.874633769758723,../L1_L2_experiments/drag_diffusion_res_80_0.7_0.01_3_L1m=True_L1p=True_L1mask=True
+building_city_view,avg LPIPS,0.8893420854139895,../L1_L2_experiments/drag_diffusion_res_80_0.7_0.01_3_L1m=True_L1p=True_L1mask=True
+building_countryside_view,avg LPIPS,0.8837049674581398,../L1_L2_experiments/drag_diffusion_res_80_0.7_0.01_3_L1m=True_L1p=True_L1mask=True
+animals,avg LPIPS,0.8676781316287816,../L1_L2_experiments/drag_diffusion_res_80_0.7_0.01_3_L1m=True_L1p=True_L1mask=True
+human_head,avg LPIPS,0.8378937922418117,../L1_L2_experiments/drag_diffusion_res_80_0.7_0.01_3_L1m=True_L1p=True_L1mask=True
+human_upper_body,avg LPIPS,0.8863098602741957,../L1_L2_experiments/drag_diffusion_res_80_0.7_0.01_3_L1m=True_L1p=True_L1mask=True
+human_full_body,avg LPIPS,0.9610837984830141,../L1_L2_experiments/drag_diffusion_res_80_0.7_0.01_3_L1m=True_L1p=True_L1mask=True
+interior_design,avg LPIPS,0.8982969792559743,../L1_L2_experiments/drag_diffusion_res_80_0.7_0.01_3_L1m=True_L1p=True_L1mask=True
+other_objects,avg LPIPS,0.8709356376102992,../L1_L2_experiments/drag_diffusion_res_80_0.7_0.01_3_L1m=True_L1p=True_L1mask=True
+art_work,avg CLIP similarity,0.97412109375,../L1_L2_experiments/drag_diffusion_res_80_0.7_0.01_3_L1m=True_L1p=True_L1mask=True
+land_scape,avg CLIP similarity,0.97802734375,../L1_L2_experiments/drag_diffusion_res_80_0.7_0.01_3_L1m=True_L1p=True_L1mask=True
+building_city_view,avg CLIP similarity,0.97314453125,../L1_L2_experiments/drag_diffusion_res_80_0.7_0.01_3_L1m=True_L1p=True_L1mask=True
+building_countryside_view,avg CLIP similarity,0.97705078125,../L1_L2_experiments/drag_diffusion_res_80_0.7_0.01_3_L1m=True_L1p=True_L1mask=True
+animals,avg CLIP similarity,0.9794921875,../L1_L2_experiments/drag_diffusion_res_80_0.7_0.01_3_L1m=True_L1p=True_L1mask=True
+human_head,avg CLIP similarity,0.97216796875,../L1_L2_experiments/drag_diffusion_res_80_0.7_0.01_3_L1m=True_L1p=True_L1mask=True
+human_upper_body,avg CLIP similarity,0.97412109375,../L1_L2_experiments/drag_diffusion_res_80_0.7_0.01_3_L1m=True_L1p=True_L1mask=True
+human_full_body,avg CLIP similarity,0.98583984375,../L1_L2_experiments/drag_diffusion_res_80_0.7_0.01_3_L1m=True_L1p=True_L1mask=True
+interior_design,avg CLIP similarity,0.98291015625,../L1_L2_experiments/drag_diffusion_res_80_0.7_0.01_3_L1m=True_L1p=True_L1mask=True
+other_objects,avg CLIP similarity,0.98095703125,../L1_L2_experiments/drag_diffusion_res_80_0.7_0.01_3_L1m=True_L1p=True_L1mask=True
+art_work,avg MD,30.297706792520923,../L1_L2_experiments/drag_diffusion_res_80_0.7_0.01_3_L1m=True_L1p=True_L1mask=True
+land_scape,avg MD,39.531831889316955,../L1_L2_experiments/drag_diffusion_res_80_0.7_0.01_3_L1m=True_L1p=True_L1mask=True
+building_city_view,avg MD,33.133202041067726,../L1_L2_experiments/drag_diffusion_res_80_0.7_0.01_3_L1m=True_L1p=True_L1mask=True
+building_countryside_view,avg MD,51.599573592750396,../L1_L2_experiments/drag_diffusion_res_80_0.7_0.01_3_L1m=True_L1p=True_L1mask=True
+animals,avg MD,32.03948508948088,../L1_L2_experiments/drag_diffusion_res_80_0.7_0.01_3_L1m=True_L1p=True_L1mask=True
+human_head,avg MD,32.70519267811495,../L1_L2_experiments/drag_diffusion_res_80_0.7_0.01_3_L1m=True_L1p=True_L1mask=True
+human_upper_body,avg MD,32.80495548248291,../L1_L2_experiments/drag_diffusion_res_80_0.7_0.01_3_L1m=True_L1p=True_L1mask=True
+human_full_body,avg MD,26.090867668390274,../L1_L2_experiments/drag_diffusion_res_80_0.7_0.01_3_L1m=True_L1p=True_L1mask=True
+interior_design,avg MD,21.904810569286347,../L1_L2_experiments/drag_diffusion_res_80_0.7_0.01_3_L1m=True_L1p=True_L1mask=True
+other_objects,avg MD,39.47566714110198,../L1_L2_experiments/drag_diffusion_res_80_0.7_0.01_3_L1m=True_L1p=True_L1mask=True
