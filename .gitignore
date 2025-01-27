@@ -1,4 +1,5 @@
 /drag_bench_evaluation/drag_bench_data/
 /drag_bench_evaluation/drag_bench_lora/
 /drag_bench_evaluation/drag_diffusion_res*/
+/drag_bench_evaluation/freedrag_diffusion_res*/
 /.venv

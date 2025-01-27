@@ -111,7 +111,9 @@ if __name__ == '__main__':
         print('\navg lpips per category:')
         for key, values in all_lpips.items():
             print(f'\t{key}: {1-np.mean(values)}')
+        print('avg lpips overall: ', np.mean([np.mean(v) for v in all_lpips.values()]))
 
         print('\navg clip similarity per category:')
         for key, values in all_clip_sim.items():
             print(f'\t{key}: {np.mean(values)}')
+        print('avg clip similarity overall: ', np.mean([np.mean(v) for v in all_clip_sim.values()]))
