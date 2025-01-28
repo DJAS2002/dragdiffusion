@@ -47,11 +47,14 @@ def update_signs(sign_point_pairs, current_point, target_point, loss_supervised,
 
 
 def get_each_point(current, target_final, L, feature_map, max_distance, template_feature,
-                   loss_initial, loss_end, position_local, threshold_l, reduce_dims):
+                   loss_initial, loss_end, position_local, threshold_l, reduce_dims, is_l1_point_tracking):
     d_max = max_distance
     d_remain = (current - target_final).pow(2).sum().pow(0.5)
     interval_number = 10  # for point localization
     intervals = torch.arange(0, 1 + 1 / interval_number, 1 / interval_number, device=current.device)[1:].unsqueeze(1)
+
+
+    point_tracking_dist = lambda diff: abs(diff) if is_l1_point_tracking else lambda diff: diff**2
 
     if loss_end < threshold_l:
         # if True:
@@ -74,8 +77,8 @@ def get_each_point(current, target_final, L, feature_map, max_distance, template
             reduce_dims_shifted = tuple(x+1 for x in reduce_dims)
             features_all = features_all.reshape((intervals.shape[0], -1, feature_map.shape[1])).sum(reduce_dims_shifted)
 
-        dif_location = abs(features_all - template_feature.flatten(0).unsqueeze(0)).mean(1)
-        min_idx = torch.argmin(abs(dif_location - L))
+        dif_location = point_tracking_dist(features_all - template_feature.flatten(0).unsqueeze(0)).mean(1)
+        min_idx = torch.argmin(point_tracking_dist(dif_location - L))
         current_best = candidate_points[min_idx, :]
         return current_best
 
@@ -101,20 +104,20 @@ def get_each_point(current, target_final, L, feature_map, max_distance, template
             reduce_dims_shifted = tuple(x+1 for x in reduce_dims)
             features_all = features_all.reshape((intervals.shape[0], -1, feature_map.shape[1])).sum(reduce_dims_shifted)
 
-        dif_location = abs(features_all - template_feature.flatten(0).unsqueeze(0)).mean(1)
+        dif_location = point_tracking_dist(features_all - template_feature.flatten(0).unsqueeze(0)).mean(1)
         min_idx = torch.argmin(dif_location)  # l=0 in this case
         current_best = candidate_points[min_idx, :]
         return current_best
 
 
 def get_current_target(sign_points, current_target, target_point, L, feature_map, max_distance, template_feature,
-                       loss_initial, loss_end, position_local, threshold_l, reduce_dims):
+                       loss_initial, loss_end, position_local, threshold_l, reduce_dims, is_l1_point_tracking):
     for k in range(target_point.shape[0]):
         if sign_points[
             k] == 0:  # sign_points ==0 means the remains distance to target point is larger than the preset threshold
             current_target[k, :] = get_each_point(current_target[k, :], target_point[k, :], \
                                                   L, feature_map, max_distance, template_feature[k], loss_initial[k],
-                                                  loss_end[k], position_local, threshold_l, reduce_dims)
+                                                  loss_end[k], position_local, threshold_l, reduce_dims, is_l1_point_tracking)
     return current_target
 
 
@@ -173,10 +176,14 @@ def freedrag_update(model,
     # prepare amp scaler for mixed-precision training
     scaler = torch.cuda.amp.GradScaler()
 
+    # use L1 or L2 norm
+    loss_func_motion = torch.nn.L1Loss() if args.is_l1_motion_supervision else torch.nn.MSELoss()
+    mask_norm = 1 if args.is_l1_mask else 2
+
     device = init_code.device
     point_pairs_number = len(handle_points)
     sign_points = torch.zeros(point_pairs_number, device=device)
-    Loss_l1 = torch.nn.L1Loss()
+    # Loss_l1 = torch.nn.L1Loss()
 
     threshold_d = 2
     threshold_l = 0.5 * l_expected
@@ -210,7 +217,7 @@ def freedrag_update(model,
         # do linear search according distance and feature discrepancy
         current_targets = get_current_target(sign_points, current_targets, target_points, l_expected, current_F,
                                              d_max, F_template, loss_ini, loss_end, position_local, threshold_l,
-                                             args.reduce_dims)
+                                             args.reduce_dims, args.is_l1_point_tracking)
         print("current: ", current_targets.cpu().numpy())
 
         d_remain = (current_targets - target_points).pow(2).sum(dim=1).pow(0.5)
@@ -234,11 +241,12 @@ def freedrag_update(model,
                 current_feature = []
                 for k in range(point_pairs_number):
                     current_feature.append(get_features_plus(F1, current_targets[k, :] + position_local))
-                    loss_supervised[k] = Loss_l1(current_feature[k], F_template[k].detach())
+                    loss_supervised[k] = loss_func_motion(current_feature[k], F_template[k].detach())
 
                 loss_feature = loss_supervised.sum()
                 if torch.any(interp_mask != 0):
-                    loss_mask = ((x_prev_updated - x_prev_0) * (1.0 - interp_mask)).abs().mean()
+                    mask_x_prev_diff = (x_prev_updated - x_prev_0) * (1.0 - interp_mask)
+                    loss_mask = torch.norm(mask_x_prev_diff, p=mask_norm)/mask_x_prev_diff.flatten().shape[0]
                     loss = loss_feature + args.lam * loss_mask
                     # print("lam", args.lam)
                 else:
@@ -265,7 +273,7 @@ def freedrag_update(model,
             current_feature = []
             for k in range(point_pairs_number):
                 current_feature.append(get_features_plus(F1, current_targets[k, :] + position_local))
-                loss_end[k] = Loss_l1(current_feature[k], F_template[k].detach())
+                loss_end[k] = loss_func_motion(current_feature[k], F_template[k].detach())
         print("loss_ini:", loss_ini.detach().cpu().numpy(), "loss_end:", loss_end.detach().cpu().numpy())
 
         sign_points = update_signs(sign_points, current_targets, target_points, loss_end, threshold_d, threshold_l)
@@ -375,7 +383,7 @@ def freedrag_update_gen(model,
         # do linear search according distance and feature discrepancy
         current_targets = get_current_target(sign_points, current_targets, target_points, l_expected, current_F,
                                              d_max, F_template, loss_ini, loss_end, position_local, threshold_l,
-                                             args.reduce_dims)
+                                             args.reduce_dims, args.is_l1_point_tracking)
         print("current: ", current_targets.cpu().numpy())
 
         d_remain = (current_targets - target_points).pow(2).sum(dim=1).pow(0.5)

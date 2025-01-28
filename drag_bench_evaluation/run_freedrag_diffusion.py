@@ -69,10 +69,10 @@ def run_drag(source_image,
              l_expected,
              d_max,
              max_step,
-             reduce_dims
-             # is_l1_motion_supervision,
-             # is_l1_point_tracking,
-             # is_l1_mask
+             reduce_dims,
+             is_l1_motion_supervision,
+             is_l1_point_tracking,
+             is_l1_mask
              # save_dir="./results"
     ):
     # initialize model
@@ -97,9 +97,9 @@ def run_drag(source_image,
 
     args = SimpleNamespace()
 
-    # args.is_l1_motion_supervision = is_l1_motion_supervision
-    # args.is_l1_point_tracking = is_l1_point_tracking
-    # args.is_l1_mask = is_l1_mask
+    args.is_l1_motion_supervision = is_l1_motion_supervision
+    args.is_l1_point_tracking = is_l1_point_tracking
+    args.is_l1_mask = is_l1_mask
 
     args.reduce_dims = reduce_dims
 
@@ -229,9 +229,9 @@ if __name__ == '__main__':
     parser.add_argument('--max_step', type=int, default=300, help='Number of maximum dragging steps')
     parser.add_argument('--reduce_dims', nargs='*', type=int, help='dims to reduce in free drag motion supervision')
 
-    # parser.add_argument('--is_l1_supervision_loss', type=bool, default=True, help='Use L1 loss in motion supervision loss')
-    # parser.add_argument('--is_l1_point_tracking', type=bool, default=True, help='Use L1 in point tracking')
-    # parser.add_argument('--is_l1_mask', type=bool, default=True, help='Use L1 loss for mask')
+    parser.add_argument('--is_l1_supervision_loss', type=bool, default=True, help='Use L1 loss in motion supervision loss')
+    parser.add_argument('--is_l1_point_tracking', type=bool, default=True, help='Use L1 in point tracking')
+    parser.add_argument('--is_l1_mask', type=bool, default=True, help='Use L1 loss for mask')
 
     args = parser.parse_args()
 
@@ -259,10 +259,13 @@ if __name__ == '__main__':
         '_' + str(args.latent_lr) + \
         '_' + str(args.unet_feature_idx) + \
         '_reduce_dims=' + ('None' if len(args.reduce_dims) == 0 \
-        else '(' + '-'.join(str(x) for x in args.reduce_dims)) + ')' + \
+        else '(' + '-'.join(str(x) for x in args.reduce_dims) + ')') + \
         '_n_step=' + str(args.max_step) +\
         '_d_max=' + str(args.d_max) + \
-        '_l_expected=' + str(args.l_expected)
+        '_l_expected=' + str(args.l_expected) + \
+        '_L1m=' + str(args.is_l1_supervision_loss) + \
+        '_L1p=' + str(args.is_l1_point_tracking) + \
+        '_L1mask=' + str(args.is_l1_mask)
 
         # mkdir if necessary
     if not os.path.isdir(result_dir):
@@ -310,9 +313,9 @@ if __name__ == '__main__':
                 d_max=args.d_max,
                 max_step=args.max_step,
                 reduce_dims=args.reduce_dims,
-                # is_l1_motion_supervision=args.is_l1_supervision_loss,
-                # is_l1_point_tracking=args.is_l1_point_tracking,
-                # is_l1_mask=args.is_l1_mask,
+                is_l1_motion_supervision=args.is_l1_supervision_loss,
+                is_l1_point_tracking=args.is_l1_point_tracking,
+                is_l1_mask=args.is_l1_mask,
             )
             save_dir = os.path.join(result_dir, cat, sample_name)
             if not os.path.isdir(save_dir):
