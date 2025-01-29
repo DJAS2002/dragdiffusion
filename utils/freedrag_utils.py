@@ -54,7 +54,7 @@ def get_each_point(current, target_final, L, feature_map, max_distance, template
     intervals = torch.arange(0, 1 + 1 / interval_number, 1 / interval_number, device=current.device)[1:].unsqueeze(1)
 
 
-    point_tracking_dist = lambda diff: abs(diff) if is_l1_point_tracking else lambda diff: diff**2
+    point_tracking_dist = (lambda diff: abs(diff)) if is_l1_point_tracking else (lambda diff: diff**2)
 
     if loss_end < threshold_l:
         # if True:
@@ -73,8 +73,10 @@ def get_each_point(current, target_final, L, feature_map, max_distance, template
 
         if len(reduce_dims) == 0:
             features_all = features_all.reshape((intervals.shape[0], -1))
+        elif len(reduce_dims) == 2:
+            features_all = features_all.reshape((intervals.shape[0], -1, feature_map.shape[1])).sum((1, 2), keepdim=True)
         else:
-            reduce_dims_shifted = tuple(x+1 for x in reduce_dims)
+            reduce_dims_shifted = tuple(x + 1 for x in reduce_dims)
             features_all = features_all.reshape((intervals.shape[0], -1, feature_map.shape[1])).sum(reduce_dims_shifted)
 
         dif_location = point_tracking_dist(features_all - template_feature.flatten(0).unsqueeze(0)).mean(1)
@@ -100,6 +102,8 @@ def get_each_point(current, target_final, L, feature_map, max_distance, template
 
         if len(reduce_dims) == 0:
             features_all = features_all.reshape((intervals.shape[0], -1))
+        elif len(reduce_dims) == 2:
+            features_all = features_all.reshape((intervals.shape[0], -1, feature_map.shape[1])).sum((1, 2), keepdim=True)
         else:
             reduce_dims_shifted = tuple(x+1 for x in reduce_dims)
             features_all = features_all.reshape((intervals.shape[0], -1, feature_map.shape[1])).sum(reduce_dims_shifted)
