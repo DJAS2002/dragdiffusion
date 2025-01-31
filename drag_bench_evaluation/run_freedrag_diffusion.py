@@ -217,6 +217,7 @@ def run_drag(source_image,
     out_image = (out_image * 255).astype(np.uint8)
     return out_image
 
+import ast
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description="setting arguments")
@@ -229,9 +230,9 @@ if __name__ == '__main__':
     parser.add_argument('--max_step', type=int, default=300, help='Number of maximum dragging steps')
     parser.add_argument('--reduce_dims', nargs='*', type=int, help='dims to reduce in free drag motion supervision')
 
-    parser.add_argument('--is_l1_supervision_loss', type=bool, default=True, help='Use L1 loss in motion supervision loss')
-    parser.add_argument('--is_l1_point_tracking', type=bool, default=True, help='Use L1 in point tracking')
-    parser.add_argument('--is_l1_mask', type=bool, default=True, help='Use L1 loss for mask')
+    parser.add_argument('--is_l1_supervision_loss', type=ast.literal_eval, default=True, help='Use L1 loss in motion supervision loss')
+    parser.add_argument('--is_l1_point_tracking', type=ast.literal_eval, default=True, help='Use L1 in point tracking')
+    parser.add_argument('--is_l1_mask', type=ast.literal_eval, default=True, help='Use L1 loss for mask')
 
     args = parser.parse_args()
 
