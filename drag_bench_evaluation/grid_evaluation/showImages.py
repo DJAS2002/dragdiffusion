@@ -89,7 +89,7 @@ def load_images_from_roots(root_folders, category, imageList=None):
 
 
 
-def display_images_in_grid(images_dict, save_path=None):
+def display_images_in_grid(images_dict, all_images, save_path=None):
     """
     Display images in a grid, where each column corresponds to an experiment.
     Save the grid as a .jpg file if save_path is provided.
@@ -106,10 +106,11 @@ def display_images_in_grid(images_dict, save_path=None):
         axes = [[ax] for ax in axes]
 
     # Add row numbers in the first column
-    for row in range(n_rows):
-        ax = axes[row][0] if n_rows > 1 else axes[0][0]
-        ax.text(0.5, 0.5, str(row + 1), fontsize=16, ha='center', va='center')
-        ax.axis('off')
+    if all_images:
+        for row in range(n_rows):
+            ax = axes[row][0] if n_rows > 1 else axes[0][0]
+            ax.text(0.5, 0.5, str(row + 1), fontsize=16, ha='center', va='center')
+            ax.axis('off')
 
     for col, (root_name, image_paths) in enumerate(images_dict.items()):
         for row in range(n_rows):
