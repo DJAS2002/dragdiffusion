@@ -40,6 +40,9 @@ import clip
 import pandas as pd
 from pytorch_lightning import seed_everything
 
+class ContinueI(Exception):
+    pass
+
 def preprocess_image(image, device):
     image = torch.from_numpy(image).float() / 127.5 - 1 # [-1, 1]
     image = rearrange(image, "h w c -> 1 c h w")
@@ -60,6 +63,8 @@ if __name__ == '__main__':
     #     #'../L1_L2_experiments/drag_diffusion_res_80_0.7_0.01_3_L1m=True_L1p=True_L1mask=False',
     #     #'../L1_L2_experiments/drag_diffusion_res_80_0.7_0.01_3_L1m=True_L1p=True_L1mask=True'
     # ]
+
+    continue_i = ContinueI()
 
     eval_root = '../freedrag_experiments/'
 
@@ -101,91 +106,100 @@ if __name__ == '__main__':
         all_dist = defaultdict(list)
         
         for cat in all_category:
-            for file_name in os.listdir(os.path.join(original_img_root, cat)):
-                if file_name == '.DS_Store':
-                    continue
-                #extract the meta data
-                with open(os.path.join(original_img_root, cat, file_name, 'meta_data.pkl'), 'rb') as f:
-                    meta_data = pickle.load(f)
-                prompt = meta_data['prompt']
-                points = meta_data['points']
+            try:
+                for file_name in os.listdir(os.path.join(original_img_root, cat)):
+                    if file_name == '.DS_Store':
+                        continue
+                    #extract the meta data
+                    with open(os.path.join(original_img_root, cat, file_name, 'meta_data.pkl'), 'rb') as f:
+                        meta_data = pickle.load(f)
+                    prompt = meta_data['prompt']
+                    points = meta_data['points']
 
-                # here, the point is in x,y coordinate
-                handle_points = []
-                target_points = []
-                for idx, point in enumerate(points):
-                    # from now on, the point is in row,col coordinate
-                    cur_point = torch.tensor([point[1], point[0]])
-                    if idx % 2 == 0:
-                        handle_points.append(cur_point)
-                    else:
-                        target_points.append(cur_point)
+                    # here, the point is in x,y coordinate
+                    handle_points = []
+                    target_points = []
+                    for idx, point in enumerate(points):
+                        # from now on, the point is in row,col coordinate
+                        cur_point = torch.tensor([point[1], point[0]])
+                        if idx % 2 == 0:
+                            handle_points.append(cur_point)
+                        else:
+                            target_points.append(cur_point)
 
-                #open the images        
-                source_image_path = os.path.join(original_img_root, cat, file_name, 'original_image.png')
-                dragged_image_path = os.path.join(target_root, cat, file_name, 'dragged_image.png')
+                    #open the images
+                    source_image_path = os.path.join(original_img_root, cat, file_name, 'original_image.png')
+                    dragged_image_path = os.path.join(target_root, cat, file_name, 'dragged_image.png')
 
-                source_image_PIL = Image.open(source_image_path)
-                dragged_image_PIL = Image.open(dragged_image_path)
-                dragged_image_PIL = dragged_image_PIL.resize(source_image_PIL.size,PIL.Image.BILINEAR)
+                    # if, due to errors during the benchmark, some folders were not benchmarked,
+                    # then there are no dragged results to evaluate. In these cases, raise
+                    # custom exception that allows the loop to continue to the next category of images
+                    if not os.path.exists(dragged_image_path):
+                        raise continue_i
 
-                #To calculate LPIP and CLIP similarity
-                source_image = preprocess_image(np.array(source_image_PIL), device)
-                dragged_image = preprocess_image(np.array(dragged_image_PIL), device)
+                    source_image_PIL = Image.open(source_image_path)
+                    dragged_image_PIL = Image.open(dragged_image_path)
+                    dragged_image_PIL = dragged_image_PIL.resize(source_image_PIL.size,PIL.Image.BILINEAR)
 
-                # compute LPIP
-                with torch.no_grad():
-                    source_image_224x224 = F.interpolate(source_image, (224,224), mode='bilinear')
-                    dragged_image_224x224 = F.interpolate(dragged_image, (224,224), mode='bilinear')
-                    cur_lpips = loss_fn_alex(source_image_224x224, dragged_image_224x224)
-                    all_lpips[cat].append(cur_lpips.item())
+                    #To calculate LPIP and CLIP similarity
+                    source_image = preprocess_image(np.array(source_image_PIL), device)
+                    dragged_image = preprocess_image(np.array(dragged_image_PIL), device)
 
-                # compute CLIP similarity
-                # source_image_clip = clip_preprocess(source_image_PIL).unsqueeze(0).to(device)
-                # dragged_image_clip = clip_preprocess(dragged_image_PIL).unsqueeze(0).to(device)
-                #
-                # with torch.no_grad():
-                #     source_feature = clip_model.encode_image(source_image_clip)
-                #     dragged_feature = clip_model.encode_image(dragged_image_clip)
-                #     source_feature /= source_feature.norm(dim=-1, keepdim=True)
-                #     dragged_feature /= dragged_feature.norm(dim=-1, keepdim=True)
-                #     cur_clip_sim = (source_feature * dragged_feature).sum()
-                #     all_clip_sim[cat].append(cur_clip_sim.cpu().numpy())
+                    # compute LPIP
+                    with torch.no_grad():
+                        source_image_224x224 = F.interpolate(source_image, (224,224), mode='bilinear')
+                        dragged_image_224x224 = F.interpolate(dragged_image, (224,224), mode='bilinear')
+                        cur_lpips = loss_fn_alex(source_image_224x224, dragged_image_224x224)
+                        all_lpips[cat].append(cur_lpips.item())
 
-                # Create tensors to calculate th MD    
-                source_image_tensor = (PILToTensor()(source_image_PIL) / 255.0 - 0.5) * 2
-                dragged_image_tensor = (PILToTensor()(dragged_image_PIL) / 255.0 - 0.5) * 2
+                    # compute CLIP similarity
+                    # source_image_clip = clip_preprocess(source_image_PIL).unsqueeze(0).to(device)
+                    # dragged_image_clip = clip_preprocess(dragged_image_PIL).unsqueeze(0).to(device)
+                    #
+                    # with torch.no_grad():
+                    #     source_feature = clip_model.encode_image(source_image_clip)
+                    #     dragged_feature = clip_model.encode_image(dragged_image_clip)
+                    #     source_feature /= source_feature.norm(dim=-1, keepdim=True)
+                    #     dragged_feature /= dragged_feature.norm(dim=-1, keepdim=True)
+                    #     cur_clip_sim = (source_feature * dragged_feature).sum()
+                    #     all_clip_sim[cat].append(cur_clip_sim.cpu().numpy())
 
-                _, H, W = source_image_tensor.shape
+                    # Create tensors to calculate th MD
+                    source_image_tensor = (PILToTensor()(source_image_PIL) / 255.0 - 0.5) * 2
+                    dragged_image_tensor = (PILToTensor()(dragged_image_PIL) / 255.0 - 0.5) * 2
 
-                ft_source = dift.forward(source_image_tensor,
-                      prompt=prompt,
-                      t=261,
-                      up_ft_index=1,
-                      ensemble_size=8)
-                ft_source = F.interpolate(ft_source, (H, W), mode='bilinear').cpu()
+                    _, H, W = source_image_tensor.shape
 
-                ft_dragged = dift.forward(dragged_image_tensor,
-                      prompt=prompt,
-                      t=261,
-                      up_ft_index=1,
-                      ensemble_size=8)
-                ft_dragged = F.interpolate(ft_dragged, (H, W), mode='bilinear').cpu()
+                    ft_source = dift.forward(source_image_tensor,
+                          prompt=prompt,
+                          t=261,
+                          up_ft_index=1,
+                          ensemble_size=8)
+                    ft_source = F.interpolate(ft_source, (H, W), mode='bilinear').cpu()
 
-                cos = nn.CosineSimilarity(dim=1)
-                for pt_idx in range(len(handle_points)):
-                    hp = handle_points[pt_idx]
-                    tp = target_points[pt_idx]
+                    ft_dragged = dift.forward(dragged_image_tensor,
+                          prompt=prompt,
+                          t=261,
+                          up_ft_index=1,
+                          ensemble_size=8)
+                    ft_dragged = F.interpolate(ft_dragged, (H, W), mode='bilinear').cpu()
 
-                    num_channel = ft_source.size(1)
-                    src_vec = ft_source[0, :, hp[0], hp[1]].view(1, num_channel, 1, 1)
-                    cos_map = cos(src_vec, ft_dragged).cpu().numpy()[0]  # H, W
-                    max_rc = np.unravel_index(cos_map.argmax(), cos_map.shape) # the matched row,col
+                    cos = nn.CosineSimilarity(dim=1)
+                    for pt_idx in range(len(handle_points)):
+                        hp = handle_points[pt_idx]
+                        tp = target_points[pt_idx]
 
-                    # calculate distance
-                    dist = (tp - torch.tensor(max_rc)).float().norm()
-                    all_dist[cat].append(dist.item())          
+                        num_channel = ft_source.size(1)
+                        src_vec = ft_source[0, :, hp[0], hp[1]].view(1, num_channel, 1, 1)
+                        cos_map = cos(src_vec, ft_dragged).cpu().numpy()[0]  # H, W
+                        max_rc = np.unravel_index(cos_map.argmax(), cos_map.shape) # the matched row,col
 
+                        # calculate distance
+                        dist = (tp - torch.tensor(max_rc)).float().norm()
+                        all_dist[cat].append(dist.item())
+
+            except ContinueI:
+                continue
 
         # Process LPIPS results
         for key, values in all_lpips.items():
