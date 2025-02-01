@@ -30,6 +30,7 @@ import torch.nn.functional as F
 from dift_sd import SDFeaturizer
 from pytorch_lightning import seed_everything
 
+import gc
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description="setting arguments")
@@ -101,14 +102,14 @@ if __name__ == '__main__':
                       t=261,
                       up_ft_index=1,
                       ensemble_size=8)
-                ft_source = F.interpolate(ft_source, (H, W), mode='bilinear')
+                ft_source = F.interpolate(ft_source, (H, W), mode='bilinear').cpu()
 
                 ft_dragged = dift.forward(dragged_image_tensor,
                       prompt=prompt,
                       t=261,
                       up_ft_index=1,
                       ensemble_size=8)
-                ft_dragged = F.interpolate(ft_dragged, (H, W), mode='bilinear')
+                ft_dragged = F.interpolate(ft_dragged, (H, W), mode='bilinear').cpu()
 
                 cos = nn.CosineSimilarity(dim=1)
                 for pt_idx in range(len(handle_points)):
@@ -122,6 +123,8 @@ if __name__ == '__main__':
 
                     # calculate distance
                     dist = (tp - torch.tensor(max_rc)).float().norm()
-                    all_dist.append(dist)
+                    all_dist.append(dist.item())
+
+                gc.collect()
 
         print(target_root + ' mean distance: ', torch.tensor(all_dist).mean().item())

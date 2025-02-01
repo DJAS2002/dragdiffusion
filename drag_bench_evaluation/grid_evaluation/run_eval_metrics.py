@@ -48,18 +48,21 @@ def preprocess_image(image, device):
 
 if __name__ == '__main__':
     # Hardcoded directories for evaluation
-    eval_roots = [
-        '../FreeDrag_experiments/drag_diffusion_res_80_0.7_0.01_3_n_step=300',
-        '../FreeDrag_experiments/freedrag_diffusion_res_80_0.7_0.01_3_n_step=300_d_max=5.0_l_expected=1.0'
-        #'../L1_L2_experiments/drag_diffusion_res_80_0.7_0.01_3_L1m=False_L1p=False_L1mask=False',
-        #'../L1_L2_experiments/drag_diffusion_res_80_0.7_0.01_3_L1m=False_L1p=False_L1mask=True',
-        #'../L1_L2_experiments/drag_diffusion_res_80_0.7_0.01_3_L1m=False_L1p=True_L1mask=False',
-        #'../L1_L2_experiments/drag_diffusion_res_80_0.7_0.01_3_L1m=False_L1p=True_L1mask=True',
-        #'../L1_L2_experiments/drag_diffusion_res_80_0.7_0.01_3_L1m=True_L1p=False_L1mask=False',
-        #'../L1_L2_experiments/drag_diffusion_res_80_0.7_0.01_3_L1m=True_L1p=False_L1mask=True',
-        #'../L1_L2_experiments/drag_diffusion_res_80_0.7_0.01_3_L1m=True_L1p=True_L1mask=False',
-        #'../L1_L2_experiments/drag_diffusion_res_80_0.7_0.01_3_L1m=True_L1p=True_L1mask=True'
-    ]
+    # eval_roots = [
+    #     '../FreeDrag_experiments/drag_diffusion_res_80_0.7_0.01_3_n_step=300',
+    #     '../FreeDrag_experiments/freedrag_diffusion_res_80_0.7_0.01_3_n_step=300_d_max=5.0_l_expected=1.0'
+    #     #'../L1_L2_experiments/drag_diffusion_res_80_0.7_0.01_3_L1m=False_L1p=False_L1mask=False',
+    #     #'../L1_L2_experiments/drag_diffusion_res_80_0.7_0.01_3_L1m=False_L1p=False_L1mask=True',
+    #     #'../L1_L2_experiments/drag_diffusion_res_80_0.7_0.01_3_L1m=False_L1p=True_L1mask=False',
+    #     #'../L1_L2_experiments/drag_diffusion_res_80_0.7_0.01_3_L1m=False_L1p=True_L1mask=True',
+    #     #'../L1_L2_experiments/drag_diffusion_res_80_0.7_0.01_3_L1m=True_L1p=False_L1mask=False',
+    #     #'../L1_L2_experiments/drag_diffusion_res_80_0.7_0.01_3_L1m=True_L1p=False_L1mask=True',
+    #     #'../L1_L2_experiments/drag_diffusion_res_80_0.7_0.01_3_L1m=True_L1p=True_L1mask=False',
+    #     #'../L1_L2_experiments/drag_diffusion_res_80_0.7_0.01_3_L1m=True_L1p=True_L1mask=True'
+    # ]
+
+    eval_root = '../freedrag_experiments/'
+
     device = torch.device("cuda") if torch.cuda.is_available() else torch.device("cpu")
     print('test')
     # using SD-2.1
@@ -70,7 +73,7 @@ if __name__ == '__main__':
     loss_fn_alex = lpips.LPIPS(net='alex').to(device)
 
     # load clip model
-    clip_model, clip_preprocess = (clip.load("ViT-B/32", device=device, jit=False))
+    # clip_model, clip_preprocess = (clip.load("ViT-B/32", device=device, jit=False))
     # clip_model, clip_preprocess = (clip.lo ("ViT-B/32", device=device, jit=False))
 
     all_category = [
@@ -91,9 +94,10 @@ if __name__ == '__main__':
     # DataFrame to store results
     results_df = pd.DataFrame(columns=['Category', 'Metric', 'Value', 'Eval_Root'])
 
-    for target_root in eval_roots:
+    for target_root in os.listdir(eval_root):
+        target_root = os.path.join(eval_root, target_root)
         all_lpips = defaultdict(list)
-        all_clip_sim = defaultdict(list)
+        # all_clip_sim = defaultdict(list)
         all_dist = defaultdict(list)
         
         for cat in all_category:
@@ -137,16 +141,16 @@ if __name__ == '__main__':
                     all_lpips[cat].append(cur_lpips.item())
 
                 # compute CLIP similarity
-                source_image_clip = clip_preprocess(source_image_PIL).unsqueeze(0).to(device)
-                dragged_image_clip = clip_preprocess(dragged_image_PIL).unsqueeze(0).to(device)
-
-                with torch.no_grad():
-                    source_feature = clip_model.encode_image(source_image_clip)
-                    dragged_feature = clip_model.encode_image(dragged_image_clip)
-                    source_feature /= source_feature.norm(dim=-1, keepdim=True)
-                    dragged_feature /= dragged_feature.norm(dim=-1, keepdim=True)
-                    cur_clip_sim = (source_feature * dragged_feature).sum()
-                    all_clip_sim[cat].append(cur_clip_sim.cpu().numpy())
+                # source_image_clip = clip_preprocess(source_image_PIL).unsqueeze(0).to(device)
+                # dragged_image_clip = clip_preprocess(dragged_image_PIL).unsqueeze(0).to(device)
+                #
+                # with torch.no_grad():
+                #     source_feature = clip_model.encode_image(source_image_clip)
+                #     dragged_feature = clip_model.encode_image(dragged_image_clip)
+                #     source_feature /= source_feature.norm(dim=-1, keepdim=True)
+                #     dragged_feature /= dragged_feature.norm(dim=-1, keepdim=True)
+                #     cur_clip_sim = (source_feature * dragged_feature).sum()
+                #     all_clip_sim[cat].append(cur_clip_sim.cpu().numpy())
 
                 # Create tensors to calculate th MD    
                 source_image_tensor = (PILToTensor()(source_image_PIL) / 255.0 - 0.5) * 2
@@ -159,14 +163,14 @@ if __name__ == '__main__':
                       t=261,
                       up_ft_index=1,
                       ensemble_size=8)
-                ft_source = F.interpolate(ft_source, (H, W), mode='bilinear')
+                ft_source = F.interpolate(ft_source, (H, W), mode='bilinear').cpu()
 
                 ft_dragged = dift.forward(dragged_image_tensor,
                       prompt=prompt,
                       t=261,
                       up_ft_index=1,
                       ensemble_size=8)
-                ft_dragged = F.interpolate(ft_dragged, (H, W), mode='bilinear')
+                ft_dragged = F.interpolate(ft_dragged, (H, W), mode='bilinear').cpu()
 
                 cos = nn.CosineSimilarity(dim=1)
                 for pt_idx in range(len(handle_points)):
@@ -193,16 +197,16 @@ if __name__ == '__main__':
             print(f'\t{key}: {avg_lpips}')
 
         # Process CLIP similarity results
-        for key, values in all_clip_sim.items():
-            avg_clip_sim = np.mean(values)
-            results_df = pd.concat([
-                results_df,
-                pd.DataFrame({'Category': [key], 'Metric': ['avg CLIP similarity'], 'Value': [avg_clip_sim], 'Eval_Root': [target_root]})
-            ])
-            print(f'\t{key}: {avg_clip_sim}')
+        # for key, values in all_clip_sim.items():
+        #     avg_clip_sim = np.mean(values)
+        #     results_df = pd.concat([
+        #         results_df,
+        #         pd.DataFrame({'Category': [key], 'Metric': ['avg CLIP similarity'], 'Value': [avg_clip_sim], 'Eval_Root': [target_root]})
+        #     ])
+        #     print(f'\t{key}: {avg_clip_sim}')
 
         
-        # Process CLIP similarity results
+        # Process MD results
         for key, values in all_dist.items():
             mean_dist = np.mean(values)
             results_df = pd.concat([
@@ -212,5 +216,5 @@ if __name__ == '__main__':
             print(f'\t{key}: {mean_dist}')
 
     # Save results to a CSV file
-    results_df.to_csv('evaluation_results_freedrag.csv', index=False)
-    print("\nResults saved to 'evaluation_results_freedrag.csv'")
+    results_df.to_csv('metrics_freedrag_experiments_1.csv', index=False)
+    print("\nResults saved to 'metrics_freedrag_experiments_1.csv'")
