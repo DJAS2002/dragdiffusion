@@ -6,7 +6,7 @@
 /drag_bench_evaluation/L1_L2_experiments/
 /drag_bench_evaluation/drag_bench_lora.zip
 /drag_bench_evaluation/lora_weights.tar.gz
-/drag_bench_evaluation/freedrag_experiments/
+/drag_bench_evaluation/freedrag_experiments*/
 
 /.venv
 

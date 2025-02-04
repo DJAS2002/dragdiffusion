@@ -1,0 +1,21 @@
+Category,Metric,Value,Eval_Root
+art_work,avg LPIPS,0.8954369940928051,../freedrag_experiments_extra/freedrag_diffusion_res_80_0.7_0.01_3_reduce_dims=None_n_step=80_d_max=5.0_l_expected=1.0_L1m=True_L1p=True_L1mask=True
+land_scape,avg LPIPS,0.8662202913652767,../freedrag_experiments_extra/freedrag_diffusion_res_80_0.7_0.01_3_reduce_dims=None_n_step=80_d_max=5.0_l_expected=1.0_L1m=True_L1p=True_L1mask=True
+building_city_view,avg LPIPS,0.8897600715004262,../freedrag_experiments_extra/freedrag_diffusion_res_80_0.7_0.01_3_reduce_dims=None_n_step=80_d_max=5.0_l_expected=1.0_L1m=True_L1p=True_L1mask=True
+building_countryside_view,avg LPIPS,0.8882664489475164,../freedrag_experiments_extra/freedrag_diffusion_res_80_0.7_0.01_3_reduce_dims=None_n_step=80_d_max=5.0_l_expected=1.0_L1m=True_L1p=True_L1mask=True
+animals,avg LPIPS,0.9398425021208823,../freedrag_experiments_extra/freedrag_diffusion_res_80_0.7_0.01_3_reduce_dims=None_n_step=80_d_max=5.0_l_expected=1.0_L1m=True_L1p=True_L1mask=True
+human_head,avg LPIPS,0.9330591812729836,../freedrag_experiments_extra/freedrag_diffusion_res_80_0.7_0.01_3_reduce_dims=None_n_step=80_d_max=5.0_l_expected=1.0_L1m=True_L1p=True_L1mask=True
+human_upper_body,avg LPIPS,0.9309569925069809,../freedrag_experiments_extra/freedrag_diffusion_res_80_0.7_0.01_3_reduce_dims=None_n_step=80_d_max=5.0_l_expected=1.0_L1m=True_L1p=True_L1mask=True
+human_full_body,avg LPIPS,0.9562662599608303,../freedrag_experiments_extra/freedrag_diffusion_res_80_0.7_0.01_3_reduce_dims=None_n_step=80_d_max=5.0_l_expected=1.0_L1m=True_L1p=True_L1mask=True
+interior_design,avg LPIPS,0.9200813452713191,../freedrag_experiments_extra/freedrag_diffusion_res_80_0.7_0.01_3_reduce_dims=None_n_step=80_d_max=5.0_l_expected=1.0_L1m=True_L1p=True_L1mask=True
+other_objects,avg LPIPS,0.9242014689637081,../freedrag_experiments_extra/freedrag_diffusion_res_80_0.7_0.01_3_reduce_dims=None_n_step=80_d_max=5.0_l_expected=1.0_L1m=True_L1p=True_L1mask=True
+art_work,avg MD,42.264376584873645,../freedrag_experiments_extra/freedrag_diffusion_res_80_0.7_0.01_3_reduce_dims=None_n_step=80_d_max=5.0_l_expected=1.0_L1m=True_L1p=True_L1mask=True
+land_scape,avg MD,36.68654205059183,../freedrag_experiments_extra/freedrag_diffusion_res_80_0.7_0.01_3_reduce_dims=None_n_step=80_d_max=5.0_l_expected=1.0_L1m=True_L1p=True_L1mask=True
+building_city_view,avg MD,32.19164914619632,../freedrag_experiments_extra/freedrag_diffusion_res_80_0.7_0.01_3_reduce_dims=None_n_step=80_d_max=5.0_l_expected=1.0_L1m=True_L1p=True_L1mask=True
+building_countryside_view,avg MD,38.172777117515096,../freedrag_experiments_extra/freedrag_diffusion_res_80_0.7_0.01_3_reduce_dims=None_n_step=80_d_max=5.0_l_expected=1.0_L1m=True_L1p=True_L1mask=True
+animals,avg MD,48.99025213718414,../freedrag_experiments_extra/freedrag_diffusion_res_80_0.7_0.01_3_reduce_dims=None_n_step=80_d_max=5.0_l_expected=1.0_L1m=True_L1p=True_L1mask=True
+human_head,avg MD,53.805007597979376,../freedrag_experiments_extra/freedrag_diffusion_res_80_0.7_0.01_3_reduce_dims=None_n_step=80_d_max=5.0_l_expected=1.0_L1m=True_L1p=True_L1mask=True
+human_upper_body,avg MD,52.084565268622505,../freedrag_experiments_extra/freedrag_diffusion_res_80_0.7_0.01_3_reduce_dims=None_n_step=80_d_max=5.0_l_expected=1.0_L1m=True_L1p=True_L1mask=True
+human_full_body,avg MD,30.496111005544662,../freedrag_experiments_extra/freedrag_diffusion_res_80_0.7_0.01_3_reduce_dims=None_n_step=80_d_max=5.0_l_expected=1.0_L1m=True_L1p=True_L1mask=True
+interior_design,avg MD,32.34687868118286,../freedrag_experiments_extra/freedrag_diffusion_res_80_0.7_0.01_3_reduce_dims=None_n_step=80_d_max=5.0_l_expected=1.0_L1m=True_L1p=True_L1mask=True
+other_objects,avg MD,52.41761455712495,../freedrag_experiments_extra/freedrag_diffusion_res_80_0.7_0.01_3_reduce_dims=None_n_step=80_d_max=5.0_l_expected=1.0_L1m=True_L1p=True_L1mask=True

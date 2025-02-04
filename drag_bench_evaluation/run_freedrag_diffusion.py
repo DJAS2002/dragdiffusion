@@ -302,7 +302,7 @@ if __name__ == '__main__':
                 prompt,
                 points,
                 inversion_strength=args.inv_strength,
-                lam=10,
+                lam=0.1,
                 latent_lr=args.latent_lr,
                 unet_feature_idx=args.unet_feature_idx,
                 model_path="runwayml/stable-diffusion-v1-5",
