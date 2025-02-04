@@ -49,10 +49,14 @@ def load_images_from_roots(root_folders, category, imageList=None):
         # Determine the name of the column
         if 'drag_bench_data' in root_name:
             processed_name = 'Original'
-        elif 'freedrag_diffusion' in root_name:
-            processed_name = 'FreeDrag'
-        elif 'drag_diffusion' in root_name and 'n_step=300' in root_name:
-            processed_name = 'DragDiffusion'
+        elif 'freedrag300_diffusion' in root_name:
+            processed_name = 'FreeDrag 300'
+        elif 'freedrag80_diffusion' in root_name:
+            processed_name = 'FreeDrag 80'
+        elif 'drag_diffusion300' in root_name:
+            processed_name = 'DragDiffusion 300'
+        elif 'drag_diffusion80' in root_name:
+            processed_name = 'DragDiffusion 80'
         else:
             processed_name = process_string(root_name)
 
