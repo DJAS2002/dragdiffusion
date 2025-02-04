@@ -49,14 +49,10 @@ def load_images_from_roots(root_folders, category, imageList=None):
         # Determine the name of the column
         if 'drag_bench_data' in root_name:
             processed_name = 'Original'
-        elif 'freedrag300_diffusion' in root_name:
-            processed_name = 'FreeDrag 300'
-        elif 'freedrag80_diffusion' in root_name:
-            processed_name = 'FreeDrag 80'
-        elif 'drag_diffusion300' in root_name:
-            processed_name = 'DragDiffusion 300'
-        elif 'drag_diffusion80' in root_name:
-            processed_name = 'DragDiffusion 80'
+        elif 'freedrag_diffusion' in root_name:
+            processed_name = 'FreeDrag'
+        elif 'drag_diffusion' in root_name and 'n_step=300' in root_name:
+            processed_name = 'DragDiffusion'
         else:
             processed_name = process_string(root_name)
 
@@ -93,7 +89,7 @@ def load_images_from_roots(root_folders, category, imageList=None):
 
 
 
-def display_images_in_grid(images_dict, all_images, save_path=None):
+def display_images_in_grid(images_dict, save_path=None, save_individual_images=False):
     """
     Display images in a grid, where each column corresponds to an experiment.
     Save the grid as a .jpg file if save_path is provided.
@@ -110,11 +106,10 @@ def display_images_in_grid(images_dict, all_images, save_path=None):
         axes = [[ax] for ax in axes]
 
     # Add row numbers in the first column
-    if all_images:
-        for row in range(n_rows):
-            ax = axes[row][0] if n_rows > 1 else axes[0][0]
-            ax.text(0.5, 0.5, str(row + 1), fontsize=16, ha='center', va='center')
-            ax.axis('off')
+    for row in range(n_rows):
+        ax = axes[row][0] if n_rows > 1 else axes[0][0]
+        ax.text(0.5, 0.5, str(row + 1), fontsize=16, ha='center', va='center')
+        ax.axis('off')
 
     for col, (root_name, image_paths) in enumerate(images_dict.items()):
         for row in range(n_rows):
@@ -122,13 +117,26 @@ def display_images_in_grid(images_dict, all_images, save_path=None):
             ax.axis('off')
             if row < len(image_paths):
                 img = Image.open(image_paths[row])
+                if save_individual_images:
+                    #save image to a file
+                    # find the part in the image_paths[row] between the first \\ en second \\ in the string
+                    # this is the subfolder name
+
+                    subfolder = f'./img/individual_images/'
+                    os.makedirs(subfolder, exist_ok=True)
+                    category = image_paths[row].split('\\')[1]
+                    file_name = f'{subfolder}/{category}-{row}{col}.png'
+                    img.save(file_name)
                 ax.imshow(img)
             if row == 0:
                 ax.set_title(root_name, fontsize=20, fontweight='bold')
 
+
     if save_path:
         plt.savefig(save_path, format='jpg')  # Save the figure as a JPG
         print(f"Saved grid to {save_path}")
+
+
 
     plt.show()
     plt.close(fig)  # Close the plot to free up memory
